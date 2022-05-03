@@ -5,7 +5,7 @@ from badges.models import Badge
 
 
 class User(AbstractUser):
-    badges = models.ManyToManyField(Badge)
+    badges = models.ManyToManyField(Badge, null=True, blank=True)
     pass
     '''
     This is a custom version of the built in User class
