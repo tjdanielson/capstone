@@ -22,3 +22,15 @@ class CleanupList(APIView, AllowAny):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CleanupDetail(APIView, IsAuthenticated):
+    def get_object(self, pk):
+        try:
+            return Cleanup.objects.get(pk=pk)
+        except Cleanup.DoesNotExist:
+            raise Http404
+    
+    def delete(self, request, pk):
+        cleanup = self.get_object(pk)
+        cleanup.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
