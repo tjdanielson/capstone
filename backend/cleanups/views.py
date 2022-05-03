@@ -64,7 +64,7 @@ class AddressList(APIView, AllowAny):
 class AddressDetail(APIView, AllowAny):
     def get(self, request, id):
         user_addresses = Cleanup.objects.filter(user=id)
-        addresses = user_addresses.filter()
+        addresses = user_addresses.filter(latitude__isnull=False)
         serializer = AddressSerializer(addresses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
