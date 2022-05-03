@@ -8,6 +8,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username']
 
+class AddressSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Cleanup
+        fields = ['id', 'street', 'city', 'state', 'zip', 'latitude', 'longitude', 'user']
+
 class CleanupSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
 
