@@ -1,5 +1,4 @@
 from rest_framework.decorators import APIView
-
 from cleanups.serializers import CleanupSerializer
 from .models import Badge
 from .serializers import BadgeSerializer
@@ -46,3 +45,4 @@ class BadgeDetail(APIView, IsAuthenticated):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
