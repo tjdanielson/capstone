@@ -20,3 +20,26 @@ class GoalList(APIView, AllowAny):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class GoalDetail(APIView, IsAuthenticated):
+
+    def get_object(self, pk):
+        try:
+            return Goal.objects.get(pk=pk)
+        except Goal.DoesNotExist:
+            raise Http404
+
+    def delete(self, request, id):
+        goal = self.get_object(id)
+        goal.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def put(self, request, id):
+        goal = self.get_object(id)
+        serializer = GoalSerializer(goal, data=request.data)
+        if serializer.is_valid() and request.user == goal.user:
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
