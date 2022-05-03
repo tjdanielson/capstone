@@ -34,3 +34,11 @@ class CleanupDetail(APIView, IsAuthenticated):
         cleanup = self.get_object(pk)
         cleanup.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def put(self, request, pk):
+        cleanup = self.get_object(pk)
+        serializer = CleanupSerializer(cleanup, data=request.data)
+        if serializer.is_valid() and request.user == cleanup.user:
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
