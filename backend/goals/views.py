@@ -42,4 +42,12 @@ class GoalDetail(APIView, IsAuthenticated):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class UserGoal(APIView, IsAuthenticated):
+
+    def get(self, request, id):
+        goals = Goal.objects.filter(user=id)
+        serializer = GoalSerializer(goals, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 
