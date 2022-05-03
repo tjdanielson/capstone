@@ -1,8 +1,11 @@
-# from django.db import models
+from django.db import models
 from django.contrib.auth.models import AbstractUser
+
+from badges.models import Badge
 
 
 class User(AbstractUser):
+    badges = models.ManyToManyField(Badge)
     pass
     '''
     This is a custom version of the built in User class
