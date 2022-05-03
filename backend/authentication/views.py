@@ -6,6 +6,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from badges.models import Badge
+from cleanups.models import Cleanup
+from django.http import Http404
 User = get_user_model()
 
 
@@ -25,11 +27,20 @@ class UserBadges(APIView, AllowAny):
         serializer = UserBadgeSerializer(users, many=True)
         return Response(serializer.data)
 
-    def patch(self, request, user_id, badge_id):
+    #intakes user id, counts number of cleanups the user has, if that matches a pre-req on a badge, it adds the badge to the user
+    def patch(self, request, user_id):
         user = User.objects.get(id=user_id)
-        badge = Badge.objects.get(id=badge_id)
-        user.badges.add(badge)
-        serializer = UserBadgeSerializer(user)
-        return Response(serializer.data)
+        cleanup_count = Cleanup.objects.filter(user=user_id).count()
+        print(cleanup_count)
+        try:
+            badges = Badge.objects.filter(cleanup_prereq__lte=cleanup_count)
+            print(badges)
+            for badge in badges:
+                user.badges.add(badge)
+            serializer = UserBadgeSerializer(user)
+            return Response(serializer.data)
+        except Badge.DoesNotExist:
+            raise Http404
+
 
 
