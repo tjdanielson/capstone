@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'cars.apps.CarsConfig',  # This app is for example use only
     'cleanups',
-    'badges'
+    'badges',
+    'goals'
 ]
 
 MIDDLEWARE = [
