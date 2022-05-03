@@ -1,4 +1,3 @@
-from socket import AddressInfo
 from django.urls import path
 from .import views
 
