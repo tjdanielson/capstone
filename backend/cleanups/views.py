@@ -90,7 +90,7 @@ class UserCleanupStats(APIView, IsAuthenticated):
             "weekly goal": goal,
             "current week progress": goal_progress
         }
-        return Response(custom_response)
+        return Response(custom_response, status=status.HTTP_200_OK)
 
 class TopUsers(APIView, IsAuthenticated):
 
@@ -99,7 +99,7 @@ class TopUsers(APIView, IsAuthenticated):
         custom_response = {}
         for i in top_users:
             custom_response[f'{i.username}'] = {i.cleanup_count}
-        return Response(custom_response)
+        return Response(custom_response, status=status.HTTP_200_OK)
 
 
 class CommunityStats(APIView, IsAuthenticated):
@@ -122,7 +122,7 @@ class CommunityStats(APIView, IsAuthenticated):
             "badges earned": total_badges,
             "user count": user_count
             }
-        return Response(custom_response)
+        return Response(custom_response, status=status.HTTP_200_OK)
 
 
 
