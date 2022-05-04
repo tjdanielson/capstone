@@ -1,6 +1,7 @@
-from calendar import MONDAY
+
 from rest_framework.decorators import APIView
 import datetime
+from django.db.models import Count
 from authentication.models import User
 from .models import Cleanup
 from goals.models import Goal
@@ -89,6 +90,17 @@ class UserCleanupStats(APIView, IsAuthenticated):
             "current week progress": goal_progress
         }
         return Response(custom_response)
+
+class TopUsers(APIView, IsAuthenticated):
+
+    def get(self, request):
+        top_users = User.objects.annotate(cleanup_count=Count('cleanup')).order_by('-cleanup_count')[:10]
+        custom_response = {}
+        for i in top_users:
+            custom_response[f'{i.username}'] = {i.cleanup_count}
+        return Response(custom_response)
+        #total number cleanups
+        #unique cities
 
 
 
