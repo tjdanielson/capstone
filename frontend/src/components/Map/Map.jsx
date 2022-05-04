@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  withScriptjs,
-  withGoogleMap,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import "./Map.css";
 
 const Map = ({ props }) => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: "",
   });
 
   if (!isLoaded) return <div>Loading...</div>;
