@@ -11,6 +11,7 @@ const HomePage = () => {
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
 
+  //Note to myself - probably don't want this on the homepage, but can copy and reuse for pages that require authentication
   useEffect(() => {
     const fetchCars = async () => {
       try {
@@ -29,12 +30,6 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.make} {car.model}
-          </p>
-        ))}
     </div>
   );
 };
