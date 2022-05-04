@@ -3,6 +3,7 @@ import react from "react";
 const UserStats = (props) => {
   return (
     <div>
+      <h3>YOUR STATS</h3>
       <div>
         <p>{props.cleanupCount}</p>
         <p>Total Cleanups</p>
