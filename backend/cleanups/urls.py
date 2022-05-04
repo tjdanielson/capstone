@@ -8,5 +8,6 @@ urlpatterns = [
     path('addresses/', views.AddressList.as_view()),
     path('addresses/<int:id>/', views.AddressDetail.as_view()),
     path('userStats/<int:user_id>/', views.UserCleanupStats.as_view()),
-    path('topUsers/', views.TopUsers.as_view())
+    path('topUsers/', views.TopUsers.as_view()),
+    path('communityStats/', views.CommunityStats.as_view()),
 ]

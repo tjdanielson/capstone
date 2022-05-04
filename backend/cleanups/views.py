@@ -5,6 +5,7 @@ from django.db.models import Count
 from authentication.models import User
 from .models import Cleanup
 from goals.models import Goal
+from badges.models import Badge
 from .serializers import CleanupSerializer, UserSerializer, AddressSerializer
 from django.http import Http404
 from rest_framework.response import Response
@@ -99,8 +100,30 @@ class TopUsers(APIView, IsAuthenticated):
         for i in top_users:
             custom_response[f'{i.username}'] = {i.cleanup_count}
         return Response(custom_response)
-        #total number cleanups
-        #unique cities
+
+
+class CommunityStats(APIView, IsAuthenticated):
+    def totalBadges(self):
+        total_badges = User.objects.filter(badges__isnull=False).values('badges') #aggregate(sum('badges'))
+        sum_badges = 0
+        for i in total_badges:
+            sum_badges += i['badges']
+        return sum_badges
+    
+    def get(self, request):
+        total_cleanups = Cleanup.objects.count()
+        total_badges = self.totalBadges()
+        distinct_cities = Cleanup.objects.values('city').distinct()
+        city_count = distinct_cities.count()
+        user_count = User.objects.count()
+        custom_response = {
+            "total cleanups": total_cleanups,
+            "city count": city_count,
+            "badges earned": total_badges,
+            "user count": user_count
+            }
+        return Response(custom_response)
+
 
 
 
