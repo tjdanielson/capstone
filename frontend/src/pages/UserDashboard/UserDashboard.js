@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import GoalTracker from "../../components/GoalTracker/GoalTracker";
 import UserStats from "../../components/UserStats/UserStats";
 import Badges from "../../components/Badges/Badges";
+import Map from "../../components/Map/Map";
 
 import axios from "axios";
 
@@ -82,6 +83,8 @@ const UserDashboard = (props) => {
       <p>WELCOME BACK, {user.username}</p>
       <GoalTracker goalStats={goalStats} />
       <UserStats badgeCount={badges.length} cleanupCount={cleanups.length} />
+      <h3>YOUR CLEANUP MAP</h3>
+      <Map />
       <Badges badges={badges[2]} />
     </div>
   );

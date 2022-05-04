@@ -25,7 +25,7 @@ const GoalTracker = (props) => {
           <h3>Current weekly cleanup goal</h3>
         </div>
         <div>
-          <Pond percentage={props.goalStats[2][1]} />
+          <Pond percentage={101} />
         </div>
       </div>
     );
@@ -33,3 +33,5 @@ const GoalTracker = (props) => {
 };
 
 export default GoalTracker;
+
+//props.goalStats[2][1]
