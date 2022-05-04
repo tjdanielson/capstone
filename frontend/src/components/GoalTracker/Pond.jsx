@@ -1,3 +1,4 @@
+import react from "react";
 const Pond = (props) => {
   if (props.percentage == 0) {
     return (
