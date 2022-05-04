@@ -45,7 +45,7 @@ class GoalDetail(APIView, IsAuthenticated):
 class UserGoal(APIView, IsAuthenticated):
 
     def get(self, request, id):
-        goals = Goal.objects.filter(user=id)
+        goals = Goal.objects.filter(user=id).order_by('-modified_date')[:1]
         serializer = GoalSerializer(goals, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

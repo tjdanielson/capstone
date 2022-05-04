@@ -1,7 +1,9 @@
+from calendar import MONDAY
 from rest_framework.decorators import APIView
-
+import datetime
 from authentication.models import User
 from .models import Cleanup
+from goals.models import Goal
 from .serializers import CleanupSerializer, UserSerializer, AddressSerializer
 from django.http import Http404
 from rest_framework.response import Response
@@ -67,4 +69,27 @@ class AddressDetail(APIView, AllowAny):
         addresses = user_addresses.filter(latitude__isnull=False)
         serializer = AddressSerializer(addresses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class UserCleanupStats(APIView, IsAuthenticated):
+    def currentWeekCleanups(self, user_id):
+        today = datetime.date.today()
+        start_week = today - datetime.timedelta(today.weekday())
+        end_week = start_week + datetime.timedelta(6)
+        current_week_cleanups = Cleanup.objects.filter(user=user_id, date_cleanup__range=[start_week, end_week]).count()
+        return current_week_cleanups
+
+    
+    def get(self, request, user_id):
+        current_week_cleanups = self.currentWeekCleanups(user_id)
+        goal = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('goal')[0]['goal']
+        goal_progress = current_week_cleanups/goal*100
+        custom_response = {
+            "current week count": current_week_cleanups,
+            "weekly goal": goal,
+            "current week progress": goal_progress
+        }
+        return Response(custom_response)
+
+
+
 
