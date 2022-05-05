@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteCleanup from "./DeleteCleanup";
-import ViewCleanup from "./ViewCleanup";
+import UpdateCleanup from "./UpdateCleanup";
 
 const CleanupList = (props) => {
   const [showTable, setShowTable] = useState(false);
@@ -42,7 +42,7 @@ const CleanupList = (props) => {
                     <DeleteCleanup cleanupId={cleanup.id} />
                   </td>
                   <td>
-                    <ViewCleanup cleanup={cleanup} />
+                    <UpdateCleanup cleanup={cleanup} />
                   </td>
                 </tr>
               );

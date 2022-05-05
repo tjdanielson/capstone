@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import useAuth from "../../hooks/useAuth";
 
-const ViewCleanup = (props) => {
+const UpdateCleanup = (props) => {
   const [user, token] = useAuth();
   const [show, setShow] = useState(false);
 
@@ -92,6 +92,30 @@ const ViewCleanup = (props) => {
             <Modal.Title>{`Cleanup ${props.cleanup.id}`}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <div className="summary">
+              <div className="before">
+                <h4>Before Image</h4>
+                <img
+                  src={
+                    props.cleanup.before_img
+                      ? `http://127.0.0.1:8000${props.cleanup.before_img}`
+                      : `http://127.0.0.1:8000/media/noimageavailable.png`
+                  }
+                  alt="after"
+                />
+              </div>
+              <div className="after">
+                <h4>After Image</h4>
+                <img
+                  src={
+                    props.cleanup.after_img
+                      ? `http://127.0.0.1:8000${props.cleanup.after_img}`
+                      : `http://127.0.0.1:8000/media/noimageavailable.png`
+                  }
+                  alt="after"
+                />
+              </div>
+            </div>
             <div className="my-form">
               <form>
                 <div className="form-group">
@@ -168,4 +192,4 @@ const ViewCleanup = (props) => {
   );
 };
 
-export default ViewCleanup;
+export default UpdateCleanup;

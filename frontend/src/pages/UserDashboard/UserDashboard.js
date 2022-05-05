@@ -104,8 +104,8 @@ const UserDashboard = (props) => {
       <UserStats badgeCount={badges.length} cleanupCount={cleanups.length} />
       <h3>YOUR CLEANUP MAP</h3>
       <Map coordinates={coords} />
-      <Badges badges={badges[2]} />
       <CleanupList cleanups={cleanups} />
+      <Badges badges={badges[2]} />
     </div>
   );
 };
