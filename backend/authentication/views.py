@@ -28,15 +28,17 @@ class UserBadges(APIView, AllowAny):
         return Response(serializer.data)
 
     #intakes user id, counts number of cleanups the user has, if that matches a pre-req on a badge, it adds the badge to the user
-    def patch(self, request, user_id):
-        user = User.objects.get(id=user_id)
-        cleanup_count = Cleanup.objects.filter(user=user_id).count()
+    def patch(self, request):
+        user = User.objects.get(id=request.user.id)
+        cleanup_count = Cleanup.objects.filter(user=request.user.id).count()
         print(cleanup_count)
         try:
-            badges = Badge.objects.filter(cleanup_prereq__lte=cleanup_count)
-            print(badges)
-            for badge in badges:
+            badges_to_add = Badge.objects.filter(cleanup_prereq__lte=cleanup_count)
+            badges_to_remove = Badge.objects.filter(cleanup_prereq__gt=cleanup_count)
+            for badge in badges_to_add:
                 user.badges.add(badge)
+            for badge in badges_to_remove:
+                user.badges.remove(badge)
             serializer = UserBadgeSerializer(user)
             return Response(serializer.data)
         except Badge.DoesNotExist:

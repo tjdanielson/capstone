@@ -7,5 +7,6 @@ urlpatterns = [
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', RegisterView.as_view(), name='register'),
     path('getbadges/<int:user_id>/', UserBadges.as_view()),
+    path('patchBadges/', UserBadges.as_view())
     #path('getbadges/<int:user_id>/<int:badge_id>/', UserBadges.as_view()),
 ]
