@@ -118,7 +118,9 @@ const UpdateCleanup = (props) => {
             </div>
             <div className="my-form">
               <form>
+                <h4>Update Cleanup Info</h4>
                 <div className="form-group">
+                  <label>Date of Cleanup</label>
                   <input
                     type="date"
                     value={date}
@@ -128,6 +130,7 @@ const UpdateCleanup = (props) => {
                   />
                 </div>
                 <div className="form-group">
+                  <label>Before Image</label>
                   <input
                     type="file"
                     value={beforeImg}
@@ -136,13 +139,15 @@ const UpdateCleanup = (props) => {
                   />
                 </div>
                 <div className="form-group">
+                  <label>After Image</label>
                   <input
                     type="file"
                     value={afterImg}
-                    placeholder="After Image"
+                    text="After Image"
                     onChange={(event) => setAfterImg(event.target.value)}
                   />
                 </div>
+                <p>Address</p>
                 <div className="form-group">
                   <input
                     type="text"
