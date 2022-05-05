@@ -39,14 +39,27 @@ const LogCleanup = (props) => {
       latitude: lat,
       longitude: lng,
     };
-    setDate("");
-    setBeforeImg("");
-    setAfterImg("");
-    setStreet("");
-    setCity("");
-    setState("");
-    setZip("");
+    if (street && city && state) {
+      getCoordinates();
+    }
+    console.log("new cleanup:", newCleanup);
     makePostRequest(newCleanup);
+  }
+
+  async function getCoordinates() {
+    try {
+      let response = await axios.get(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${city}+${state}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
+      );
+      let data = response.data;
+      setLat(data.results[0].geometry.location.lat);
+      setLng(data.results[0].geometry.location.lng);
+    } catch (ex) {
+      console.log("error");
+      alert(
+        "Error - Please try again. Make sure you fill in all song details!"
+      );
+    }
   }
 
   async function makePostRequest(newCleanup) {
