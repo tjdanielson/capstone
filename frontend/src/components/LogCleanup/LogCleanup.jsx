@@ -54,6 +54,7 @@ const LogCleanup = (props) => {
       getCoordinates();
     }
     makePostRequest(newCleanup);
+    makeBadgeRequest();
     console.log("new cleanup:", newCleanup);
   }
 
@@ -102,9 +103,26 @@ const LogCleanup = (props) => {
         }
       );
       console.log("patch request:", response.data);
+      window.location.reload(false);
     } catch (ex) {
       console.log("error");
       alert("Error - Please try again.");
+    }
+  }
+
+  async function makeBadgeRequest() {
+    try {
+      let response = await axios.patch(
+        `http://127.0.0.1:8000/auth/patchBadges/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log("patch badge request:", response.data);
+    } catch (ex) {
+      console.log("error");
     }
   }
 
