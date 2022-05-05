@@ -1,46 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import "./Map.css";
 
-const Map = ({ props }) => {
+const Map = (props) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "",
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-
-  let positions = [
-    { lat: 42.97648210424851, lng: -87.89953605065793 },
-    { lat: 42.97877413788161, lng: -87.88957969147206 },
-    { lat: 42.977015873136786, lng: -87.89447204038237 },
-  ];
-
-  //   function Map() {
-  //     return (
-  //       <GoogleMap
-  //         zoom={10}
-  //         center={{ lat: 44, lng: -80 }}
-  //         mapContainerClassName="map-container"
-  //       >
-  //         {positions.map((data, i) => {
-  //           return <Marker position={data} />;
-  //         })}
-  //       </GoogleMap>
-  //     );
-  //   }
-
-  return (
-    <GoogleMap
-      zoom={10}
-      center={{ lat: 44, lng: -80 }}
-      mapContainerClassName="map-container"
-    >
-      {/* {positions.map((data, i) => {
-        return <Marker position={data} />;
-      })} */}
-    </GoogleMap>
-  );
+  console.log("coords on mappage:", props.coordinates);
+  if (props.coordinates.length === 0) {
+    return null;
+  } else {
+    return (
+      <GoogleMap
+        zoom={10}
+        center={props.coordinates[0]}
+        mapContainerClassName="map-container"
+      >
+        {props.coordinates.map((data, i) => {
+          console.log("marker", i);
+          return <Marker key={i} position={data} />;
+        })}
+      </GoogleMap>
+    );
+  }
 };
 
 export default Map;
