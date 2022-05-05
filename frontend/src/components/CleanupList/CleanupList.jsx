@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import DeleteCleanup from "./DeleteCleanup";
 
 const CleanupList = (props) => {
   const [showTable, setShowTable] = useState(false);
@@ -36,8 +37,9 @@ const CleanupList = (props) => {
                 <tr key={i}>
                   <td>{cleanup.date_submitted}</td>
                   <td>{cleanup.date_cleanup}</td>
-                  {/* <td><DeleteSong songIdproperty={song.id} reloadMusic={makeGetRequest}/></td>
-                                <td><UpdateSong song={song} reloadMusic={makeGetRequest}/></td> */}
+                  <td>
+                    <DeleteCleanup cleanupId={cleanup.id} />
+                  </td>
                 </tr>
               );
             })}
