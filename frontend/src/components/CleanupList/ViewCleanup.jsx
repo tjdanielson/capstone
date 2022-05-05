@@ -5,10 +5,9 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import useAuth from "../../hooks/useAuth";
 
-const LogCleanup = (props) => {
+const ViewCleanup = (props) => {
   const [user, token] = useAuth();
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -17,19 +16,19 @@ const LogCleanup = (props) => {
     handleSumbit(event);
   };
 
-  const [date, setDate] = useState("");
-  const [beforeImg, setBeforeImg] = useState(null);
-  const [afterImg, setAfterImg] = useState(null);
-  const [street, setStreet] = useState(null);
-  const [city, setCity] = useState(null);
-  const [state, setState] = useState(null);
-  const [zip, setZip] = useState(null);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [date, setDate] = useState(props.cleanup.date_cleanup);
+  const [beforeImg, setBeforeImg] = useState(props.cleanup.beforeImg);
+  const [afterImg, setAfterImg] = useState(props.cleanup.afterImg);
+  const [street, setStreet] = useState(props.cleanup.street);
+  const [city, setCity] = useState(props.cleanup.city);
+  const [state, setState] = useState(props.cleanup.state);
+  const [zip, setZip] = useState(props.cleanup.zip);
+  const [lat, setLat] = useState(props.cleanup.latitude);
+  const [lng, setLng] = useState(props.cleanup.longitude);
 
   function handleSumbit(event) {
     event.preventDefault();
-    let newCleanup = {
+    let updatedCleanup = {
       date_cleanup: date,
       before_img: beforeImg,
       after_img: afterImg,
@@ -41,13 +40,14 @@ const LogCleanup = (props) => {
       longitude: lng,
     };
     if (street && city && state) {
-      getCoordinates();
+      getCoordinates(updatedCleanup);
+    } else {
+      makePostRequest(updatedCleanup);
     }
-    console.log("new cleanup:", newCleanup);
-    makePostRequest(newCleanup);
+    console.log("updated cleanup:", updatedCleanup);
   }
 
-  async function getCoordinates() {
+  async function getCoordinates(updatedCleanup) {
     try {
       let response = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${city}+${state}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
@@ -55,16 +55,17 @@ const LogCleanup = (props) => {
       let data = response.data;
       setLat(data.results[0].geometry.location.lat);
       setLng(data.results[0].geometry.location.lng);
+      makePostRequest(updatedCleanup);
     } catch (ex) {
       console.log("error");
     }
   }
 
-  async function makePostRequest(newCleanup) {
+  async function makePostRequest(updatedCleanup) {
     try {
-      let response = await axios.post(
-        "http://127.0.0.1:8000/api/cleanups/",
-        newCleanup,
+      let response = await axios.put(
+        `http://127.0.0.1:8000/api/cleanups/${props.cleanup.id}/`,
+        updatedCleanup,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -84,11 +85,11 @@ const LogCleanup = (props) => {
     <div>
       <>
         <Button className="modal-button" variant="primary" onClick={handleShow}>
-          Log a Cleanup
+          View/Update
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Log a Cleanup</Modal.Title>
+            <Modal.Title>{`Cleanup ${props.cleanup.id}`}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="my-form">
@@ -167,4 +168,4 @@ const LogCleanup = (props) => {
   );
 };
 
-export default LogCleanup;
+export default ViewCleanup;
