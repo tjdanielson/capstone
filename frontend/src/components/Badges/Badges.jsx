@@ -12,7 +12,7 @@ const Badges = (props) => {
           return (
             <div key={i}>
               <p>{badge.description}</p>
-              <a>{badge.unlocked_image}</a>
+              <img src={`http://127.0.0.1:8000${badge.unlocked_image}`} />
             </div>
           );
         })}
