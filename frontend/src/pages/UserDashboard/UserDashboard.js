@@ -5,7 +5,6 @@ import GoalTracker from "../../components/GoalTracker/GoalTracker";
 import UserStats from "../../components/UserStats/UserStats";
 import Badges from "../../components/Badges/Badges";
 import Map from "../../components/Map/Map";
-
 import axios from "axios";
 
 const UserDashboard = (props) => {

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Pond from "./Pond";
+import UpdateGoal from "./UpdateGoal";
 
 import axios from "axios";
 
@@ -21,11 +22,11 @@ const GoalTracker = (props) => {
         </div>
         <div>
           <h3>{props.goalStats[1][1]}</h3>
-          <button>Update</button>
+          <UpdateGoal goalId={props.goalStats[3][1]} />
           <h3>Current weekly cleanup goal</h3>
         </div>
         <div>
-          <Pond percentage={101} />
+          <Pond percentage={props.goalStats[2][1]} />
         </div>
       </div>
     );
@@ -34,4 +35,4 @@ const GoalTracker = (props) => {
 
 export default GoalTracker;
 
-//props.goalStats[2][1]
+//
