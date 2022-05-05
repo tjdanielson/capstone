@@ -48,6 +48,14 @@ class CleanupDetail(APIView, IsAuthenticated):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def patch(self, request, pk):
+        cleanup = self.get_object(pk)
+        serializer = CleanupSerializer(cleanup, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 #gets all cleanups for a specific user
 class CleanupUser(APIView, AllowAny):
     

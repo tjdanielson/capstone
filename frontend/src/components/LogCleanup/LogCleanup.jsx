@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
@@ -8,7 +8,7 @@ import useAuth from "../../hooks/useAuth";
 const LogCleanup = (props) => {
   const [user, token] = useAuth();
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [id, setId] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,6 +27,16 @@ const LogCleanup = (props) => {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
 
+  useEffect(() => {
+    if (lat && lng && id > 0) {
+      let coordinates = {
+        latitude: lat.toFixed(7),
+        longitude: lng.toFixed(7),
+      };
+      makePatchRequest(coordinates);
+    }
+  }, [lat, lng, id]);
+
   function handleSumbit(event) {
     event.preventDefault();
     let newCleanup = {
@@ -43,8 +53,8 @@ const LogCleanup = (props) => {
     if (street && city && state) {
       getCoordinates();
     }
-    console.log("new cleanup:", newCleanup);
     makePostRequest(newCleanup);
+    console.log("new cleanup:", newCleanup);
   }
 
   async function getCoordinates() {
@@ -72,8 +82,26 @@ const LogCleanup = (props) => {
         }
       );
       if (response.status === 201) {
-        window.location.reload();
+        setId(response.data.id);
       }
+    } catch (ex) {
+      console.log("error");
+      alert("Error - Please try again.");
+    }
+  }
+
+  async function makePatchRequest(coordinates) {
+    try {
+      let response = await axios.patch(
+        `http://127.0.0.1:8000/api/cleanups/${id}/`,
+        coordinates,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log("patch request:", response.data);
     } catch (ex) {
       console.log("error");
       alert("Error - Please try again.");
