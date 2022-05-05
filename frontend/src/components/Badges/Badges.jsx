@@ -1,5 +1,6 @@
 import react from "react";
 const Badges = (props) => {
+  console.log("badges on badges: ", props.badges);
   if (!props.badges) {
     return null;
   } else {

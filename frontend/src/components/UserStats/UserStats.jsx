@@ -1,6 +1,7 @@
 import react from "react";
 
 const UserStats = (props) => {
+  console.log("badges on userstats:", props.badges);
   if (!props.badges) {
     return null;
   } else {

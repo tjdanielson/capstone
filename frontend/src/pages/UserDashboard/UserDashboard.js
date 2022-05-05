@@ -100,7 +100,7 @@ const UserDashboard = (props) => {
     <div>
       <p>WELCOME BACK, {user.username}</p>
       <GoalTracker goalStats={goalStats} />
-      <UserStats badgeCount={badges} cleanupCount={cleanups.length} />
+      <UserStats badgeCount={badges[2]} cleanupCount={cleanups.length} />
       <h3>YOUR CLEANUP MAP</h3>
       <Map coordinates={coords} />
       <CleanupList cleanups={cleanups} />
