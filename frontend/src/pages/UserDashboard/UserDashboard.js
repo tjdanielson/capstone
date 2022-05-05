@@ -6,6 +6,7 @@ import UserStats from "../../components/UserStats/UserStats";
 import Badges from "../../components/Badges/Badges";
 import Map from "../../components/Map/Map";
 import axios from "axios";
+import CleanupList from "../../components/CleanupList/CleanupList";
 
 const UserDashboard = (props) => {
   const [user, token] = useAuth();
@@ -89,9 +90,8 @@ const UserDashboard = (props) => {
           },
         }
       );
-      let result = Object.entries(response.data);
       console.log(response.data);
-      setCleanups(result);
+      setCleanups(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -105,6 +105,7 @@ const UserDashboard = (props) => {
       <h3>YOUR CLEANUP MAP</h3>
       <Map coordinates={coords} />
       <Badges badges={badges[2]} />
+      <CleanupList cleanups={cleanups} />
     </div>
   );
 };

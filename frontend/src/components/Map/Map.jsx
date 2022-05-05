@@ -9,7 +9,7 @@ const Map = (props) => {
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  console.log("coords on mappage:", props.coordinates);
+
   if (props.coordinates.length === 0) {
     return null;
   } else {
@@ -20,7 +20,6 @@ const Map = (props) => {
         mapContainerClassName="map-container"
       >
         {props.coordinates.map((data, i) => {
-          console.log("marker", i);
           return <Marker key={i} position={data} />;
         })}
       </GoogleMap>
