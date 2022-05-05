@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
@@ -23,8 +23,18 @@ const UpdateCleanup = (props) => {
   const [city, setCity] = useState(props.cleanup.city);
   const [state, setState] = useState(props.cleanup.state);
   const [zip, setZip] = useState(props.cleanup.zip);
-  const [lat, setLat] = useState(props.cleanup.latitude);
-  const [lng, setLng] = useState(props.cleanup.longitude);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+
+  useEffect(() => {
+    if (lat && lng) {
+      let coordinates = {
+        latitude: lat.toFixed(7),
+        longitude: lng.toFixed(7),
+      };
+      makePatchRequest(coordinates);
+    }
+  }, [lat, lng]);
 
   function handleSumbit(event) {
     event.preventDefault();
@@ -36,18 +46,15 @@ const UpdateCleanup = (props) => {
       city: city,
       state: state,
       zip: zip,
-      latitude: lat,
-      longitude: lng,
     };
     if (street && city && state) {
-      getCoordinates(updatedCleanup);
-    } else {
-      makePostRequest(updatedCleanup);
+      getCoordinates();
     }
+    makePutRequest(updatedCleanup);
     console.log("updated cleanup:", updatedCleanup);
   }
 
-  async function getCoordinates(updatedCleanup) {
+  async function getCoordinates() {
     try {
       let response = await axios.get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${city}+${state}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
@@ -55,13 +62,12 @@ const UpdateCleanup = (props) => {
       let data = response.data;
       setLat(data.results[0].geometry.location.lat);
       setLng(data.results[0].geometry.location.lng);
-      makePostRequest(updatedCleanup);
     } catch (ex) {
       console.log("error");
     }
   }
 
-  async function makePostRequest(updatedCleanup) {
+  async function makePutRequest(updatedCleanup) {
     try {
       let response = await axios.put(
         `http://127.0.0.1:8000/api/cleanups/${props.cleanup.id}/`,
@@ -73,8 +79,26 @@ const UpdateCleanup = (props) => {
         }
       );
       if (response.status === 201) {
-        window.location.reload();
+        console.log("put request response:", response.data);
       }
+    } catch (ex) {
+      console.log("error");
+      alert("Error - Please try again.");
+    }
+  }
+
+  async function makePatchRequest(coordinates) {
+    try {
+      let response = await axios.patch(
+        `http://127.0.0.1:8000/api/cleanups/${props.cleanup.id}/`,
+        coordinates,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log("patch request:", response.data);
     } catch (ex) {
       console.log("error");
       alert("Error - Please try again.");
