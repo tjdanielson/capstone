@@ -73,6 +73,7 @@ const UserDashboard = (props) => {
       );
       let result = Object.entries(response.data[0]);
       setBadges(result);
+      console.log("result:", result);
       console.log("results2:", result[2][1]);
       console.log(`badges:`, badges);
     } catch (error) {
@@ -101,7 +102,7 @@ const UserDashboard = (props) => {
     <div>
       <p>WELCOME BACK, {user.username}</p>
       <GoalTracker goalStats={goalStats} />
-      <UserStats badgeCount={badges.length} cleanupCount={cleanups.length} />
+      <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
       <h3>YOUR CLEANUP MAP</h3>
       <Map coordinates={coords} />
       <CleanupList cleanups={cleanups} />

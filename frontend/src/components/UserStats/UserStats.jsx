@@ -1,6 +1,17 @@
-import react from "react";
+import react, { useState, useEffect } from "react";
 
 const UserStats = (props) => {
+  const [badgeCount, setBadgeCount] = useState(0);
+
+  useEffect(() => {
+    countBadges();
+  }, [props.badges]);
+
+  function countBadges() {
+    let count = props.badges[1].length;
+    setBadgeCount(count);
+  }
+
   return (
     <div>
       <h3>YOUR STATS</h3>
@@ -9,7 +20,9 @@ const UserStats = (props) => {
         <p>Total Cleanups</p>
       </div>
       <div>
-        <p>{props.badgeCount}</p>
+        {console.log("badgecount: ", badgeCount)}
+        {console.log("badges[2]", props.badgeCount)}
+        <p>{badgeCount}</p>
         <p>Total Badges</p>
       </div>
     </div>
@@ -17,3 +30,5 @@ const UserStats = (props) => {
 };
 
 export default UserStats;
+
+//        <p>{props.badgeCount}</p>
