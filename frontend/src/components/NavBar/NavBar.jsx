@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import LogCleanup from "../LogCleanup/LogCleanup";
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -16,6 +17,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>{user ? <Link to="profile/">User Dashboard</Link> : <a></a>}</li>
+        <li>{user ? <LogCleanup /> : <a></a>}</li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
