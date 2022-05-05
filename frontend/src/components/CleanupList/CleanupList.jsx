@@ -7,7 +7,7 @@ import UpdateCleanup from "./UpdateCleanup";
 const CleanupList = (props) => {
   const [showTable, setShowTable] = useState(false);
 
-  const handleShow = () => setShowTable(true);
+  const handleShow = () => setShowTable(!showTable);
 
   return (
     <div>
