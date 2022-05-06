@@ -17,6 +17,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>{user ? <Link to="profile/">User Dashboard</Link> : <a></a>}</li>
+        <li>
+          {user ? <Link to="commdash/">Community Dashboard</Link> : <a></a>}
+        </li>
         <li>{user ? <LogCleanup /> : <a></a>}</li>
         <li>
           {user ? (

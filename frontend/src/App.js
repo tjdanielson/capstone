@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
+import CommunityDashboard from "./pages/CommunityDashboard/CommunityDashboard";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -33,6 +34,14 @@ function App() {
           element={
             <PrivateRoute>
               <UserDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/commdash"
+          element={
+            <PrivateRoute>
+              <CommunityDashboard />
             </PrivateRoute>
           }
         />
