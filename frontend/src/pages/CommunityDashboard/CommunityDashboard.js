@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Map from "../../components/Map/Map";
+import Leaderboard from "../../components/Leaderboard/Leaderboard";
 
 const CommunityDashboard = (props) => {
   const [user, token] = useAuth();
   const [coords, setCoords] = useState([]);
+  const [topUsers, setTopUsers] = useState([]);
 
   useEffect(() => {
     getCleanupCoords();
+    getTopUsers();
   }, [token]);
 
   // get all coordinates
@@ -32,12 +35,26 @@ const CommunityDashboard = (props) => {
       console.log(error.message);
     }
   };
+
   // get top 10 users
+  const getTopUsers = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/cleanups/topUsers/`
+      );
+      let result = Object.entries(response.data);
+      setTopUsers(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   // get community stats
   return (
     <div>
       <h3>Community Dash</h3>
       <Map coordinates={coords} />
+      <Leaderboard users={topUsers} />
     </div>
   );
 };
