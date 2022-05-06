@@ -1,7 +1,7 @@
 
 from rest_framework.decorators import APIView
 import datetime
-from django.db.models import Count
+from django.db.models import Count, Q
 from authentication.models import User
 from .models import Cleanup
 from goals.models import Goal
@@ -104,9 +104,18 @@ class UserCleanupStats(APIView, IsAuthenticated):
         return Response(custom_response, status=status.HTTP_200_OK)
 
 class TopUsers(APIView, IsAuthenticated):
+    def currentWeekCleanups(self):
+        today = datetime.date.today()
+        start_week = today - datetime.timedelta(today.weekday())
+        end_week = start_week + datetime.timedelta(6)
+        current_week_cleanups = Cleanup.objects.filter(date_cleanup__range=[start_week, end_week])
+        return current_week_cleanups
 
     def get(self, request):
-        top_users = User.objects.annotate(cleanup_count=Count('cleanup')).order_by('-cleanup_count')[:10]
+        today = datetime.date.today()
+        start_week = today - datetime.timedelta(today.weekday())
+        end_week = start_week + datetime.timedelta(6)
+        top_users = User.objects.annotate(cleanup_count=Count('cleanup', filter=Q(cleanup__date_cleanup__range=[start_week, end_week]))).order_by('-cleanup_count')[:10]
         custom_response = {}
         for i in top_users:
             custom_response[f'{i.username}'] = {i.cleanup_count}
