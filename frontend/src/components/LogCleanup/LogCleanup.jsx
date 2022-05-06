@@ -41,23 +41,22 @@ const LogCleanup = (props) => {
 
   function handleSumbit(event) {
     event.preventDefault();
-    let newCleanup = {
-      date_cleanup: date,
-      time_spent: time,
-      before_img: beforeImg,
-      after_img: afterImg,
-      street: street,
-      city: city,
-      state: state,
-      zip: zip,
-      latitude: lat,
-      longitude: lng,
-    };
+    // let newCleanup = {
+    //   date_cleanup: date,
+    //   time_spent: time,
+    //   before_img: beforeImg,
+    //   after_img: afterImg,
+    //   street: street,
+    //   city: city,
+    //   state: state,
+    //   zip: zip,
+    //   latitude: lat,
+    //   longitude: lng,
+    // };
     if (street && city && state) {
       getCoordinates();
     }
-    makePostRequest(newCleanup);
-    console.log("new cleanup:", newCleanup);
+    makePostRequest();
   }
 
   async function getCoordinates() {
@@ -73,7 +72,7 @@ const LogCleanup = (props) => {
     }
   }
 
-  async function makePostRequest(newCleanup) {
+  async function makePostRequest() {
     const fd = new FormData();
     fd.append("date_cleanup", date);
     fd.append("time_spent", time);
@@ -83,8 +82,6 @@ const LogCleanup = (props) => {
     fd.append("city", city);
     fd.append("state", state);
     fd.append("zip", zip);
-    console.log("before image: ", beforeImg);
-    console.log("after image: ", afterImg);
     try {
       let response = await axios.post(
         "http://127.0.0.1:8000/api/cleanups/",
