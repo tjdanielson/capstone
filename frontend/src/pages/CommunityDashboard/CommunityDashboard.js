@@ -54,7 +54,6 @@ const CommunityDashboard = (props) => {
   };
 
   // get community stats
-  // get top 10 users
   const getCommunityStats = async () => {
     try {
       let response = await axios.get(

@@ -128,10 +128,10 @@ class CommunityStats(APIView, IsAuthenticated):
         city_count = distinct_cities.count()
         user_count = User.objects.count()
         custom_response = {
-            "total cleanups": total_cleanups,
-            "city count": city_count,
-            "badges earned": total_badges,
-            "user count": user_count
+            "total_cleanups": total_cleanups,
+            "city_count": city_count,
+            "badges_earned": total_badges,
+            "user_count": user_count
             }
         return Response(custom_response, status=status.HTTP_200_OK)
 
