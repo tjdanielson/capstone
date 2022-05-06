@@ -89,20 +89,13 @@ class UserCleanupStats(APIView, IsAuthenticated):
         current_week_cleanups = Cleanup.objects.filter(user=user_id, date_cleanup__range=[start_week, end_week]).count()
         return current_week_cleanups
 
-    def validateResult(self, result):
-        if (result):
-            return result
-        else:
-            return 0
-
-    
     def get(self, request, user_id):
         try:
-            current_week_cleanups = self.validateResult(self.currentWeekCleanups(user_id))
+            current_week_cleanups = self.currentWeekCleanups(user_id)
         except: current_week_cleanups = 0
         print(current_week_cleanups)
         try:
-            goal = self.validateResult(Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('goal')[0]['goal'])
+            goal = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('goal')[0]['goal']
         except: goal = 0
         if goal==0:
             goal_progress = 0
