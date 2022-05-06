@@ -17,6 +17,7 @@ const UpdateCleanup = (props) => {
   };
 
   const [date, setDate] = useState(props.cleanup.date_cleanup);
+  const [time, setTime] = useState(props.cleanup.time_spent);
   const [beforeImg, setBeforeImg] = useState(props.cleanup.beforeImg);
   const [afterImg, setAfterImg] = useState(props.cleanup.afterImg);
   const [street, setStreet] = useState(props.cleanup.street);
@@ -40,6 +41,7 @@ const UpdateCleanup = (props) => {
     event.preventDefault();
     let updatedCleanup = {
       date_cleanup: date,
+      time_spent: time,
       before_img: beforeImg,
       after_img: afterImg,
       street: street,
@@ -151,6 +153,16 @@ const UpdateCleanup = (props) => {
                     placeholder="Date of Cleanup"
                     required
                     onChange={(event) => setDate(event.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Time Spent</label>
+                  <input
+                    type="number"
+                    value={time}
+                    placeholder="Time Spent (in minutes)"
+                    required
+                    onChange={(event) => setTime(event.target.value)}
                   />
                 </div>
                 <div className="form-group">

@@ -27,6 +27,7 @@ const CleanupList = (props) => {
           <thead>
             <tr>
               <th>Date Logged</th>
+              <td>Time Spent</td>
               <th>Date of Cleanup</th>
               <th></th>
               <th></th>
@@ -37,6 +38,7 @@ const CleanupList = (props) => {
               return (
                 <tr key={i}>
                   <td>{cleanup.date_submitted}</td>
+                  <td>{cleanup.time_spent}</td>
                   <td>{cleanup.date_cleanup}</td>
                   <td>
                     <DeleteCleanup cleanupId={cleanup.id} />
