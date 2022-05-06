@@ -39,16 +39,6 @@ const UpdateCleanup = (props) => {
 
   function handleSumbit(event) {
     event.preventDefault();
-    // let updatedCleanup = {
-    //   date_cleanup: date,
-    //   time_spent: time,
-    //   before_img: beforeImg,
-    //   after_img: afterImg,
-    //   street: street,
-    //   city: city,
-    //   state: state,
-    //   zip: zip,
-    // };
     if (street && city && state) {
       getCoordinates();
     }
@@ -72,12 +62,24 @@ const UpdateCleanup = (props) => {
     const fd = new FormData();
     fd.append("date_cleanup", date);
     fd.append("time_spent", time);
-    fd.append("before_img", beforeImg);
-    fd.append("after_img", afterImg);
-    fd.append("street", street);
-    fd.append("city", city);
-    fd.append("state", state);
-    fd.append("zip", zip);
+    if (beforeImg) {
+      fd.append("before_img", beforeImg);
+    }
+    if (afterImg) {
+      fd.append("after_img", afterImg);
+    }
+    if (street) {
+      fd.append("street", street);
+    }
+    if (city) {
+      fd.append("city", city);
+    }
+    if (state) {
+      fd.append("state", state);
+    }
+    if (zip) {
+      fd.append("zip", zip);
+    }
     try {
       let response = await axios.put(
         `http://127.0.0.1:8000/api/cleanups/${props.cleanup.id}/`,
