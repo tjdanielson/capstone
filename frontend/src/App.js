@@ -21,14 +21,7 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/profile"
           element={

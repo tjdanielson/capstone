@@ -8,6 +8,7 @@ class Cleanup(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_submitted = models.DateTimeField(default=timezone.now)
     date_cleanup = models.DateField(null=True, blank=False)
+    time_spent = models.IntegerField(default=0)
     before_img = models.ImageField(null=True, blank=True, default="noimageavailable.png")
     after_img = models.ImageField(null=True, blank=True, default="noimageavailable.png")
     street = models.CharField(max_length=300, null=True, blank=True)

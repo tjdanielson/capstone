@@ -19,4 +19,4 @@ class CleanupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cleanup
-        fields = ['id', 'date_submitted', 'date_cleanup', 'before_img', 'after_img', 'street', 'city', 'state', 'zip', 'latitude', 'longitude', 'user']
+        fields = ['id', 'date_submitted', 'date_cleanup', 'time_spent', 'before_img', 'after_img', 'street', 'city', 'state', 'zip', 'latitude', 'longitude', 'user']
