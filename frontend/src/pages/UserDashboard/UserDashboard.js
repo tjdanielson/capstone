@@ -20,6 +20,7 @@ const UserDashboard = (props) => {
     getGoalTrackerStats();
     getUserBadges();
     getUserCleanups();
+    makeBadgeRequest();
   }, [token]);
 
   const getCleanupCoords = async () => {
@@ -97,6 +98,22 @@ const UserDashboard = (props) => {
       console.log(error.message);
     }
   };
+
+  async function makeBadgeRequest() {
+    try {
+      let response = await axios.patch(
+        `http://127.0.0.1:8000/api/auth/getbadges/${user.id}/`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log("patch badge request:", response.data);
+    } catch (ex) {
+      console.log("error");
+    }
+  }
 
   return (
     <div>

@@ -22,6 +22,7 @@ class CleanupList(APIView, AllowAny):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
+        print("posting cleanup", request.user)
         serializer = CleanupSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
