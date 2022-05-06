@@ -23,6 +23,7 @@ class CleanupList(APIView, AllowAny):
 
     def post(self, request):
         print("posting cleanup", request.user)
+        print(request.data)
         serializer = CleanupSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)

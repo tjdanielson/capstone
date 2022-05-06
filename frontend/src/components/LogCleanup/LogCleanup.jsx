@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
@@ -9,6 +9,7 @@ const LogCleanup = (props) => {
   const [user, token] = useAuth();
   const [show, setShow] = useState(false);
   const [id, setId] = useState(0);
+  const inputRef = useRef();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -73,13 +74,25 @@ const LogCleanup = (props) => {
   }
 
   async function makePostRequest(newCleanup) {
+    const fd = new FormData();
+    fd.append("date_cleanup", date);
+    fd.append("time_spent", time);
+    fd.append("before_img", beforeImg);
+    fd.append("after_img", afterImg);
+    fd.append("street", street);
+    fd.append("city", city);
+    fd.append("state", state);
+    fd.append("zip", zip);
+    console.log("before image: ", beforeImg);
+    console.log("after image: ", afterImg);
     try {
       let response = await axios.post(
         "http://127.0.0.1:8000/api/cleanups/",
-        newCleanup,
+        fd,
         {
           headers: {
             Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -145,17 +158,16 @@ const LogCleanup = (props) => {
                 <div className="form-group">
                   <input
                     type="file"
-                    value={beforeImg}
                     placeholder="Before Image"
-                    onChange={(event) => setBeforeImg(event.target.value)}
+                    onChange={(event) => setBeforeImg(event.target.files[0])}
+                    ref={inputRef}
                   />
                 </div>
                 <div className="form-group">
                   <input
                     type="file"
-                    value={afterImg}
                     placeholder="After Image"
-                    onChange={(event) => setAfterImg(event.target.value)}
+                    onChange={(event) => setAfterImg(event.target.files[0])}
                   />
                 </div>
                 <div className="form-group">
