@@ -39,21 +39,20 @@ const UpdateCleanup = (props) => {
 
   function handleSumbit(event) {
     event.preventDefault();
-    let updatedCleanup = {
-      date_cleanup: date,
-      time_spent: time,
-      before_img: beforeImg,
-      after_img: afterImg,
-      street: street,
-      city: city,
-      state: state,
-      zip: zip,
-    };
+    // let updatedCleanup = {
+    //   date_cleanup: date,
+    //   time_spent: time,
+    //   before_img: beforeImg,
+    //   after_img: afterImg,
+    //   street: street,
+    //   city: city,
+    //   state: state,
+    //   zip: zip,
+    // };
     if (street && city && state) {
       getCoordinates();
     }
-    makePutRequest(updatedCleanup);
-    console.log("updated cleanup:", updatedCleanup);
+    makePutRequest();
   }
 
   async function getCoordinates() {
@@ -69,14 +68,24 @@ const UpdateCleanup = (props) => {
     }
   }
 
-  async function makePutRequest(updatedCleanup) {
+  async function makePutRequest() {
+    const fd = new FormData();
+    fd.append("date_cleanup", date);
+    fd.append("time_spent", time);
+    fd.append("before_img", beforeImg);
+    fd.append("after_img", afterImg);
+    fd.append("street", street);
+    fd.append("city", city);
+    fd.append("state", state);
+    fd.append("zip", zip);
     try {
       let response = await axios.put(
         `http://127.0.0.1:8000/api/cleanups/${props.cleanup.id}/`,
-        updatedCleanup,
+        fd,
         {
           headers: {
             Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -169,18 +178,14 @@ const UpdateCleanup = (props) => {
                   <label>Before Image</label>
                   <input
                     type="file"
-                    value={beforeImg}
-                    placeholder="Before Image"
-                    onChange={(event) => setBeforeImg(event.target.value)}
+                    onChange={(event) => setBeforeImg(event.target.files[0])}
                   />
                 </div>
                 <div className="form-group">
                   <label>After Image</label>
                   <input
                     type="file"
-                    value={afterImg}
-                    text="After Image"
-                    onChange={(event) => setAfterImg(event.target.value)}
+                    onChange={(event) => setAfterImg(event.target.files[0])}
                   />
                 </div>
                 <p>Address</p>

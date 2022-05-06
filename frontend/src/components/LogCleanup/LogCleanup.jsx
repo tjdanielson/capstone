@@ -41,18 +41,6 @@ const LogCleanup = (props) => {
 
   function handleSumbit(event) {
     event.preventDefault();
-    // let newCleanup = {
-    //   date_cleanup: date,
-    //   time_spent: time,
-    //   before_img: beforeImg,
-    //   after_img: afterImg,
-    //   street: street,
-    //   city: city,
-    //   state: state,
-    //   zip: zip,
-    //   latitude: lat,
-    //   longitude: lng,
-    // };
     if (street && city && state) {
       getCoordinates();
     }
