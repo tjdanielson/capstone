@@ -89,12 +89,27 @@ class UserCleanupStats(APIView, IsAuthenticated):
         current_week_cleanups = Cleanup.objects.filter(user=user_id, date_cleanup__range=[start_week, end_week]).count()
         return current_week_cleanups
 
+    def validateResult(self, result):
+        if (result):
+            return result
+        else:
+            return 0
+
     
     def get(self, request, user_id):
-        current_week_cleanups = self.currentWeekCleanups(user_id)
-        goal = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('goal')[0]['goal']
-        goal_progress = current_week_cleanups/goal*100
-        goalId = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('id')[0]['id']
+        try:
+            current_week_cleanups = self.validateResult(self.currentWeekCleanups(user_id))
+        except: current_week_cleanups = 0
+        print(current_week_cleanups)
+        try:
+            goal = self.validateResult(Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('goal')[0]['goal'])
+        except: goal = 0
+        if goal==0:
+            goal_progress = 0
+            goalId = 0
+        else:
+            goal_progress = current_week_cleanups/goal*100
+            goalId = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('id')[0]['id']
         custom_response = {
             "current week count": current_week_cleanups,
             "weekly goal": goal,
@@ -104,12 +119,6 @@ class UserCleanupStats(APIView, IsAuthenticated):
         return Response(custom_response, status=status.HTTP_200_OK)
 
 class TopUsers(APIView, IsAuthenticated):
-    def currentWeekCleanups(self):
-        today = datetime.date.today()
-        start_week = today - datetime.timedelta(today.weekday())
-        end_week = start_week + datetime.timedelta(6)
-        current_week_cleanups = Cleanup.objects.filter(date_cleanup__range=[start_week, end_week])
-        return current_week_cleanups
 
     def get(self, request):
         today = datetime.date.today()

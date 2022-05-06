@@ -5,4 +5,4 @@ from authentication.models import User
 class Goal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     modified_date = models.DateTimeField(auto_now=True)
-    goal = models.IntegerField()
+    goal = models.IntegerField(default=5)
