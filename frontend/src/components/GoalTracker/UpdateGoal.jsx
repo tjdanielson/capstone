@@ -30,8 +30,8 @@ const UpdateGoal = (props) => {
 
   async function makePostRequest(newGoal) {
     try {
-      let response = await axios.put(
-        `http://127.0.0.1:8000/api/goals/${props.goalId}/`,
+      let response = await axios.post(
+        `http://127.0.0.1:8000/api/goals/`,
         newGoal,
         {
           headers: {
