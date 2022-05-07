@@ -7,6 +7,7 @@ import Badges from "../../components/Badges/Badges";
 import Map from "../../components/Map/Map";
 import axios from "axios";
 import CleanupList from "../../components/CleanupList/CleanupList";
+import "../../App.css";
 
 const UserDashboard = (props) => {
   const [user, token] = useAuth();
@@ -116,7 +117,7 @@ const UserDashboard = (props) => {
   }
 
   return (
-    <div>
+    <div className="user-dash">
       <p>WELCOME BACK, {user.username}</p>
       <GoalTracker goalStats={goalStats} />
       <UserStats badges={badges[2]} cleanupCount={cleanups.length} />

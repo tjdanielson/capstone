@@ -4,6 +4,7 @@ import axios from "axios";
 import Map from "../../components/Map/Map";
 import Leaderboard from "../../components/Leaderboard/Leaderboard";
 import CommunityStats from "../../components/CommunityStats/CommunityStats";
+import "../../App.css";
 
 const CommunityDashboard = (props) => {
   const [user, token] = useAuth();
@@ -67,7 +68,7 @@ const CommunityDashboard = (props) => {
   };
 
   return (
-    <div>
+    <div className="community-dash">
       <h3>Community Dash</h3>
       <Map coordinates={coords} />
       <Leaderboard users={topUsers} />

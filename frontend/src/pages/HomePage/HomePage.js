@@ -1,8 +1,10 @@
 import React from "react";
+import reactDom from "react-dom";
+import "../../App.css";
 
 const HomePage = () => {
   return (
-    <div className="container">
+    <div className="homepage">
       <h1>Welcome</h1>
       <h1>About Us</h1>
     </div>
