@@ -1,4 +1,5 @@
 import react from "react";
+import "./Badges.css";
 const Badges = (props) => {
   console.log("badges on badges: ", props.badges);
   if (!props.badges) {
@@ -6,17 +7,21 @@ const Badges = (props) => {
   } else {
     return (
       <div>
-        <h3>BADGES</h3>
-        {console.log(props.badges)}
-
-        {props.badges[1].map((badge, i) => {
-          return (
-            <div key={i}>
-              <p>{badge.description}</p>
-              <img src={`http://127.0.0.1:8000${badge.unlocked_image}`} />
-            </div>
-          );
-        })}
+        <div className="header">
+          <h3>BADGES</h3>
+        </div>
+        <div className="badge-container">
+          {props.badges[1].map((badge, i) => {
+            return (
+              <div className="badge-card" key={i}>
+                <div className="img-container">
+                  <img src={`http://127.0.0.1:8000${badge.unlocked_image}`} />
+                </div>
+                <p>Earned for logging {badge.cleanup_prereq} cleanup(s).</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
