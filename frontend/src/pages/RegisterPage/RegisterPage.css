@@ -1,0 +1,52 @@
+.error {
+  color: red;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  justify-self: center;
+  align-items: center;
+  margin-top: 4rem;
+  border-color: #a98467;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10px;
+  padding: 5rem;
+}
+
+.input {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem;
+}
+
+.login-button {
+  padding: 0.5rem;
+  background-color: #a98467;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  justify-self: center;
+  margin-top: 1rem;
+}
+
+.form a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.form a {
+  color: #a98467;
+}
+
+label {
+  color: #6c584c;
+}
+
+.register-text {
+  width: 40%;
+}
