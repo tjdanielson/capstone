@@ -4,6 +4,6 @@ html {
   background-color: #f0ead2;
 }
 
-/* .container {
-  background-color: #f0ead2;
-} */
+.homepage {
+  background-image: url("../../../public/assets/background.png");
+}
