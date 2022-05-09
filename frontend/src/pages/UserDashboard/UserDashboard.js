@@ -118,7 +118,7 @@ const UserDashboard = (props) => {
 
   return (
     <div className="user-dash">
-      <p>WELCOME BACK, {user.username}</p>
+      <h1>WELCOME BACK, {user.username}</h1>
       <GoalTracker goalStats={goalStats} />
       <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
       <h3>YOUR CLEANUP MAP</h3>

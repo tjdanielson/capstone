@@ -1,0 +1,74 @@
+.logged-cleanups {
+  background-color: #adc178;
+  max-width: 15%;
+  border-radius: 15px;
+  margin-left: 20%;
+  padding: 0.3rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logged-cleanups-content {
+  justify-items: center;
+  align-items: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logged-cleanups-content p {
+  color: white;
+  font-size: large;
+  padding-top: 0.5rem;
+}
+
+.logged-cleanups-number {
+  justify-content: center;
+  justify-self: center;
+  margin-right: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.weekly-goal-container {
+  background-color: #adc178;
+  max-width: 15%;
+  border-radius: 15px;
+  margin-left: 20%;
+  padding: 0.3rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.weekly-goal-button-container {
+  margin-right: 1rem;
+  justify-content: center;
+  justify-self: center;
+  margin-right: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.weekly-goal-container p {
+  color: white;
+  font-size: large;
+  padding-top: 0.5rem;
+}
+
+.modal-button {
+  padding: 0.1rem;
+  font-size: small;
+  background-color: #a98467;
+  border: none;
+}
+
+.modal-button:hover {
+  padding: 0.1rem;
+  font-size: small;
+  background-color: #a98467;
+  border: none;
+}

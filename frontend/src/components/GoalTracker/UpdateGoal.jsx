@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import "./GoalTracker.css";
 
 const UpdateGoal = (props) => {
   const [user, token] = useAuth();
