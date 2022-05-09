@@ -57,7 +57,7 @@ const UpdateGoal = (props) => {
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Update Your Goal</Modal.Title>
+            <Modal.Title className="title">Update Your Goal</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="my-form">
@@ -74,10 +74,11 @@ const UpdateGoal = (props) => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button variant="primary" onClick={handleCloseSave}>
+            <Button
+              className="save-button"
+              variant="primary"
+              onClick={handleCloseSave}
+            >
               Save Changes
             </Button>
           </Modal.Footer>
