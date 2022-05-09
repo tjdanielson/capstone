@@ -102,7 +102,7 @@ class UserCleanupStats(APIView, IsAuthenticated):
             goal_progress = 0
             goalId = 0
         else:
-            goal_progress = current_week_cleanups/goal*100
+            goal_progress = round(current_week_cleanups/goal*100)
             goalId = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('id')[0]['id']
         custom_response = {
             "current week count": current_week_cleanups,
