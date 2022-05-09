@@ -1,0 +1,14 @@
+.stats-flex-container {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.box {
+  background-color: #a98467;
+  border-radius: 15px;
+  margin: 2rem;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}

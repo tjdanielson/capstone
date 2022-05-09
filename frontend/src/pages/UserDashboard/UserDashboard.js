@@ -125,6 +125,7 @@ const UserDashboard = (props) => {
       <GoalTracker goalStats={goalStats} />
       <div className="flex-wrap-stats-map">
         <div className="your-stats-container">
+          <h3>YOUR STATS</h3>
           <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
         </div>
         <div className="map-container">

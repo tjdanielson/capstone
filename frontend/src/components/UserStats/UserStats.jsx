@@ -1,4 +1,5 @@
 import react, { useState, useEffect } from "react";
+import "./UserStats.css";
 
 const UserStats = (props) => {
   const [badgeCount, setBadgeCount] = useState(0);
@@ -15,17 +16,24 @@ const UserStats = (props) => {
   }
 
   return (
-    <div>
-      <h3>YOUR STATS</h3>
-      <div>
-        <p>{props.cleanupCount}</p>
-        <p>Total Cleanups</p>
+    <div className="stats-flex-container">
+      <div className="box">
+        <div className="number">
+          <h2>{props.cleanupCount}</h2>
+        </div>
+        <div className="words">
+          <p>Total Cleanups</p>
+        </div>
       </div>
-      <div>
+      <div className="box">
         {console.log("badgecount: ", badgeCount)}
         {console.log("badges[2]", props.badgeCount)}
-        <p>{badgeCount}</p>
-        <p>Total Badges</p>
+        <div className="number">
+          <h2>{badgeCount}</h2>
+        </div>
+        <div className="words">
+          <p>Total Badges</p>
+        </div>
       </div>
     </div>
   );
