@@ -123,11 +123,19 @@ const UserDashboard = (props) => {
         <h1>WELCOME BACK, {user.username.toUpperCase()}</h1>
       </div>
       <GoalTracker goalStats={goalStats} />
-      <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
-      <h3>YOUR CLEANUP MAP</h3>
-      <Map coordinates={coords} />
-      <CleanupList cleanups={cleanups} />
-      <Badges badges={badges[2]} />
+      <div className="flex-wrap-stats-map">
+        <div className="your-stats-container">
+          <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
+        </div>
+        <div className="map-container">
+          <h3>YOUR CLEANUP MAP</h3>
+          <Map coordinates={coords} />
+          <CleanupList cleanups={cleanups} />
+        </div>
+      </div>
+      <div className="badges-container">
+        <Badges badges={badges[2]} />
+      </div>
     </div>
   );
 };

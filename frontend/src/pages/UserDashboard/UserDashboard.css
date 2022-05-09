@@ -5,3 +5,12 @@
   align-content: center;
   padding: 1rem;
 }
+
+.flex-wrap-stats-map {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
