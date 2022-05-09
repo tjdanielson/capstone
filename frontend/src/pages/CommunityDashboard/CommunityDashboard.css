@@ -11,4 +11,5 @@ h3 {
   justify-content: space-around;
   align-items: flex-start;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
