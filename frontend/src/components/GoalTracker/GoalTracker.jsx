@@ -37,7 +37,7 @@ const GoalTracker = (props) => {
           <div className="box-container">
             <div className="box-contents">
               <div className="logged-cleanups-number">
-                <h3>{props.goalStats[0][1]}</h3>
+                <h2>{props.goalStats[0][1]}</h2>
               </div>
               <p>Cleanups logged this week</p>
             </div>
@@ -46,7 +46,7 @@ const GoalTracker = (props) => {
           <div className="box-container">
             <div className="box-contents">
               <div className="weekly-goal-button-container">
-                <h3>{props.goalStats[1][1]}</h3>
+                <h2>{props.goalStats[1][1]}</h2>
                 <UpdateGoal goalId={props.goalStats[3][1]} />
               </div>
               <p>Current weekly cleanup goal</p>
