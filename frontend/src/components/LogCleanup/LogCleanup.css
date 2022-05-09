@@ -1,0 +1,26 @@
+.modal-content {
+  background-color: #adc178;
+  border-radius: 10px;
+  border: none;
+}
+
+.title {
+  color: #6c584c;
+}
+
+.my-form input {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.save-button {
+  background-color: #929e71;
+  border: none;
+}
+
+.save-button:hover {
+  background-color: #a98467;
+  border: none;
+}
