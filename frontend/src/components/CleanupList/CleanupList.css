@@ -2,17 +2,15 @@
   border-radius: 10px;
   color: white;
   padding: 0.2rem;
-  margin-top: 0.5rem;
 }
 
 .my-table {
   width: 100%;
   margin-top: 1em;
-  border-collapse: collapse;
 }
 
 .table-body tr {
-  border-color: #a98467;
+  border-color: #c5a084;
   border-style: solid;
   border-width: 1px;
 }
@@ -23,6 +21,7 @@ th {
 
 .table-body td {
   padding: 0.15em;
+  color: #6c584c;
 }
 
 .modal-body {

@@ -131,7 +131,9 @@ const UserDashboard = (props) => {
         <div className="map-container-dash">
           <h3>YOUR CLEANUP MAP</h3>
           <Map coordinates={coords} />
-          <CleanupList cleanups={cleanups} />
+          <div className="cleanup-list-button-container">
+            <CleanupList cleanups={cleanups} />
+          </div>
         </div>
       </div>
       <div className="badges-container">

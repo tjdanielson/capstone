@@ -127,7 +127,7 @@ const UpdateCleanup = (props) => {
         </Button>
         <Modal dialogClassName="update-modal" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title className="title">{`Cleanup ${props.cleanup.id}`}</Modal.Title>
+            {/* <Modal.Title className="title">{`Cleanup ${props.cleanup.id}`}</Modal.Title> */}
           </Modal.Header>
           <Modal.Body>
             <div className="summary">
