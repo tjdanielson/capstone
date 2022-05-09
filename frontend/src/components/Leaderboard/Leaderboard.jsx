@@ -1,3 +1,5 @@
+import "./Leaderboard.css";
+
 const Leaderboard = (props) => {
   if (!props.users) {
     return null;
