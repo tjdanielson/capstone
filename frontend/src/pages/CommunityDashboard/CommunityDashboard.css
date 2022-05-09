@@ -1,0 +1,14 @@
+h3 {
+  color: #6c584c;
+}
+
+.community-dash {
+  padding-top: 2rem;
+}
+
+.leader-stats-flex-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 2rem;
+}

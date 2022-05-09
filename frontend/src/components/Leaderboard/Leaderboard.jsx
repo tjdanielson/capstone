@@ -4,7 +4,6 @@ const Leaderboard = (props) => {
   } else {
     return (
       <div>
-        <h3>Leaderboard</h3>
         <table className="leaderboard">
           <thead>
             <tr>

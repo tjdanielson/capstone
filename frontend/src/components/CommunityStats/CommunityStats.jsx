@@ -1,25 +1,42 @@
+import "../UserStats/UserStats.css";
+
 const CommunityStats = (props) => {
   if (!props.stats) {
     return null;
   } else {
     return (
-      <div>
-        <h3>Community Stats</h3>
-        <div>
-          <p>{props.stats.total_cleanups}</p>
-          <p>Total Cleanups</p>
+      <div className="stats-flex-container">
+        <div className="box">
+          <div className="number">
+            <h2>{props.stats.total_cleanups}</h2>
+          </div>
+          <div className="words">
+            <p>Total Cleanups</p>
+          </div>
         </div>
-        <div>
-          <p>{props.stats.badges_earned}</p>
-          <p>Total Badges</p>
+        <div className="box">
+          <div className="number">
+            <h2>{props.stats.badges_earned}</h2>
+          </div>
+          <div className="words">
+            <p>Total Badges</p>
+          </div>
         </div>
-        <div>
-          <p>{props.stats.city_count}</p>
-          <p>Cities</p>
+        <div className="box">
+          <div className="number">
+            <h2>{props.stats.city_count}</h2>
+          </div>
+          <div className="words">
+            <p>Cities</p>
+          </div>
         </div>
-        <div>
-          <p>{props.stats.user_count}</p>
-          <p>Users</p>
+        <div className="box">
+          <div className="number">
+            <h2>{props.stats.user_count}</h2>
+          </div>
+          <div className="words">
+            <p>Users</p>
+          </div>
         </div>
       </div>
     );

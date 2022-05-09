@@ -5,6 +5,7 @@ import Map from "../../components/Map/Map";
 import Leaderboard from "../../components/Leaderboard/Leaderboard";
 import CommunityStats from "../../components/CommunityStats/CommunityStats";
 import "../../App.css";
+import "./CommunityDashboard.css";
 
 const CommunityDashboard = (props) => {
   const [user, token] = useAuth();
@@ -69,10 +70,18 @@ const CommunityDashboard = (props) => {
 
   return (
     <div className="community-dash">
-      <h3>Community Dash</h3>
+      <h3>Community Cleanup Map</h3>
       <Map coordinates={coords} />
-      <Leaderboard users={topUsers} />
-      <CommunityStats stats={stats} />
+      <div className="leader-stats-flex-wrapper">
+        <div className="leaderboard-container">
+          <h3>Weekly Leaderboard</h3>
+          <Leaderboard users={topUsers} />
+        </div>
+        <div className="stats-container">
+          <h3>Community Stats</h3>
+          <CommunityStats stats={stats} />
+        </div>
+      </div>
     </div>
   );
 };
