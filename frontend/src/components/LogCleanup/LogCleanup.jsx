@@ -21,14 +21,14 @@ const LogCleanup = (props) => {
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [beforeImg, setBeforeImg] = useState(null);
-  const [afterImg, setAfterImg] = useState(null);
-  const [street, setStreet] = useState(null);
-  const [city, setCity] = useState(null);
-  const [state, setState] = useState(null);
-  const [zip, setZip] = useState(null);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [beforeImg, setBeforeImg] = useState("");
+  const [afterImg, setAfterImg] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
 
   useEffect(() => {
     if (lat && lng && id > 0) {
@@ -62,10 +62,6 @@ const LogCleanup = (props) => {
   }
 
   async function makePostRequest() {
-    console.log("zip:", zip);
-    console.log("street:", street);
-    console.log("b image:", beforeImg);
-    console.log("b image:", afterImg);
     const fd = new FormData();
     fd.append("date_cleanup", date);
     fd.append("time_spent", time);
