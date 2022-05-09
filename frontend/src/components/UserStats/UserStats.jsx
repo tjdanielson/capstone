@@ -3,6 +3,7 @@ import "./UserStats.css";
 
 const UserStats = (props) => {
   const [badgeCount, setBadgeCount] = useState(0);
+  const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
     if (props.badges) {
@@ -10,9 +11,20 @@ const UserStats = (props) => {
     }
   }, [props.badges]);
 
+  useEffect(() => {
+    if (props.totalMinutes) {
+      getTime();
+    }
+  }, [props.totalMinutes]);
+
   function countBadges() {
     let count = props.badges[1].length;
     setBadgeCount(count);
+  }
+
+  function getTime() {
+    let time = Object.entries(props.totalMinutes[1]);
+    setMinutes(time[0][1]);
   }
 
   return (
@@ -26,8 +38,6 @@ const UserStats = (props) => {
         </div>
       </div>
       <div className="box">
-        {console.log("badgecount: ", badgeCount)}
-        {console.log("badges[2]", props.badgeCount)}
         <div className="number">
           <h2>{badgeCount}</h2>
         </div>
@@ -36,11 +46,9 @@ const UserStats = (props) => {
         </div>
       </div>
       <div className="box">
-        <div className="number">
-          <h2>{badgeCount}</h2>
-        </div>
+        <div className="number">{<h2>{minutes}</h2>}</div>
         <div className="words">
-          <p>Total Badges</p>
+          <p>Total Minutes</p>
         </div>
       </div>
     </div>

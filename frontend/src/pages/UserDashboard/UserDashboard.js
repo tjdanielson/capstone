@@ -40,7 +40,6 @@ const UserDashboard = (props) => {
         }
       });
       setCoords(new_coords);
-      console.log(coords);
     } catch (error) {
       console.log(error.message);
     }
@@ -57,7 +56,6 @@ const UserDashboard = (props) => {
         }
       );
       let result = Object.entries(response.data);
-      console.log(response.data);
       setGoalStats(result);
     } catch (error) {
       console.log(error.message);
@@ -96,7 +94,6 @@ const UserDashboard = (props) => {
         let array = cleanup.date_submitted.split("T");
         cleanup.date_submitted = array[0];
       });
-      console.log(response.data);
       setCleanups(response.data);
     } catch (error) {
       console.log(error.message);
@@ -127,7 +124,11 @@ const UserDashboard = (props) => {
       <div className="flex-wrap-stats-map">
         <div className="your-stats-container">
           <h3>YOUR STATS</h3>
-          <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
+          <UserStats
+            badges={badges[2]}
+            cleanupCount={cleanups.length}
+            totalMinutes={goalStats[4]}
+          />
         </div>
         <div className="map-container-dash">
           <h3>YOUR CLEANUP MAP</h3>

@@ -1,7 +1,7 @@
 
 from rest_framework.decorators import APIView
 import datetime
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Sum
 from authentication.models import User
 from .models import Cleanup
 from goals.models import Goal
@@ -104,11 +104,16 @@ class UserCleanupStats(APIView, IsAuthenticated):
         else:
             goal_progress = round(current_week_cleanups/goal*100)
             goalId = Goal.objects.filter(user=user_id).order_by('-modified_date')[:1].values('id')[0]['id']
+        try:
+            minutes = Cleanup.objects.filter(user=user_id).aggregate(Sum('time_spent'))
+        except: 
+            minutes = 0
         custom_response = {
             "current week count": current_week_cleanups,
             "weekly goal": goal,
             "current week progress": goal_progress,
             "goal Id": goalId,
+            "minutes": minutes,
         }
         return Response(custom_response, status=status.HTTP_200_OK)
 
