@@ -35,6 +35,14 @@ const UserStats = (props) => {
           <p>Total Badges</p>
         </div>
       </div>
+      <div className="box">
+        <div className="number">
+          <h2>{badgeCount}</h2>
+        </div>
+        <div className="words">
+          <p>Total Badges</p>
+        </div>
+      </div>
     </div>
   );
 };
