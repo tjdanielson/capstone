@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import useAuth from "../../hooks/useAuth";
+import "./CleanupList.css";
 
 const UpdateCleanup = (props) => {
   const [user, token] = useAuth();
@@ -124,9 +125,9 @@ const UpdateCleanup = (props) => {
         <Button className="modal-button" variant="primary" onClick={handleShow}>
           View/Update
         </Button>
-        <Modal show={show} onHide={handleClose}>
+        <Modal dialogClassName="update-modal" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{`Cleanup ${props.cleanup.id}`}</Modal.Title>
+            <Modal.Title className="title">{`Cleanup ${props.cleanup.id}`}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="summary">
@@ -156,72 +157,81 @@ const UpdateCleanup = (props) => {
             <div className="my-form">
               <form>
                 <h4>Update Cleanup Info</h4>
-                <div className="form-group">
-                  <label>Date of Cleanup</label>
-                  <input
-                    type="date"
-                    value={date}
-                    placeholder="Date of Cleanup"
-                    required
-                    onChange={(event) => setDate(event.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Time Spent</label>
-                  <input
-                    type="number"
-                    value={time}
-                    placeholder="Time Spent (in minutes)"
-                    required
-                    onChange={(event) => setTime(event.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Before Image</label>
-                  <input
-                    type="file"
-                    onChange={(event) => setBeforeImg(event.target.files[0])}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>After Image</label>
-                  <input
-                    type="file"
-                    onChange={(event) => setAfterImg(event.target.files[0])}
-                  />
-                </div>
-                <p>Address</p>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Street"
-                    value={street}
-                    onChange={(event) => setStreet(event.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="City"
-                    value={city}
-                    onChange={(event) => setCity(event.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="State"
-                    value={state}
-                    onChange={(event) => setState(event.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Zip"
-                    value={zip}
-                    onChange={(event) => setZip(event.target.value)}
-                  />
+                <div className="form-flex-container">
+                  <div className="basic-info-container">
+                    <p>Basics</p>
+                    <div className="form-group">
+                      <label>Date of Cleanup</label>
+                      <input
+                        type="date"
+                        value={date}
+                        placeholder="Date of Cleanup"
+                        required
+                        onChange={(event) => setDate(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Time Spent</label>
+                      <input
+                        type="number"
+                        value={time}
+                        placeholder="Time Spent (in minutes)"
+                        required
+                        onChange={(event) => setTime(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Before Image</label>
+                      <input
+                        type="file"
+                        onChange={(event) =>
+                          setBeforeImg(event.target.files[0])
+                        }
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>After Image</label>
+                      <input
+                        type="file"
+                        onChange={(event) => setAfterImg(event.target.files[0])}
+                      />
+                    </div>
+                  </div>
+                  <div className="address-container">
+                    <p>Address</p>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        placeholder="Street"
+                        value={street}
+                        onChange={(event) => setStreet(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        placeholder="City"
+                        value={city}
+                        onChange={(event) => setCity(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        placeholder="State"
+                        value={state}
+                        onChange={(event) => setState(event.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        placeholder="Zip"
+                        value={zip}
+                        onChange={(event) => setZip(event.target.value)}
+                      />
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
@@ -230,7 +240,11 @@ const UpdateCleanup = (props) => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleCloseSave}>
+            <Button
+              className="save-button"
+              variant="primary"
+              onClick={handleCloseSave}
+            >
               Save Changes
             </Button>
           </Modal.Footer>

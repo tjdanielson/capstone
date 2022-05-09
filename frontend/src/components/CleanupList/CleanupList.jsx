@@ -3,6 +3,7 @@ import { Button } from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeleteCleanup from "./DeleteCleanup";
 import UpdateCleanup from "./UpdateCleanup";
+import "./CleanupList.css";
 
 const CleanupList = (props) => {
   const [showTable, setShowTable] = useState(false);
@@ -27,7 +28,7 @@ const CleanupList = (props) => {
           <thead>
             <tr>
               <th>Date Logged</th>
-              <td>Time Spent</td>
+              <th>Time Spent</th>
               <th>Date of Cleanup</th>
               <th></th>
               <th></th>

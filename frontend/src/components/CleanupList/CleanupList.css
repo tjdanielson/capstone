@@ -1,0 +1,60 @@
+.modal-button {
+  border-radius: 10px;
+  color: white;
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.my-table {
+  width: 100%;
+  margin-top: 1em;
+  border-collapse: collapse;
+}
+
+.table-body tr {
+  border-color: #a98467;
+  border-style: solid;
+  border-width: 1px;
+}
+
+th {
+  color: #6c584c;
+}
+
+.table-body td {
+  padding: 0.15em;
+}
+
+.modal-body {
+  color: white;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.update-modal {
+  width: 60%;
+  max-width: none !important;
+}
+
+.form-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.address-container input {
+  width: 100%;
+  margin: 0.5rem;
+}
+
+form h4 {
+  text-align: center;
+  margin-top: 2rem;
+}

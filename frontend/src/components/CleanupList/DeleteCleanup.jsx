@@ -3,6 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import "./CleanupList.css";
 
 const DeleteCleanup = (props) => {
   const [show, setShow] = useState(false);
@@ -31,14 +32,17 @@ const DeleteCleanup = (props) => {
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete Cleanup?</Modal.Title>
+          <Modal.Title className="title">Delete Cleanup?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>This action cannot be undone.</Modal.Body>
+        <Modal.Body className="modal-body">
+          This action cannot be undone.
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleCloseSave}>
+          <Button
+            className="save-button"
+            variant="primary"
+            onClick={handleCloseSave}
+          >
             Delete Cleanup
           </Button>
         </Modal.Footer>
