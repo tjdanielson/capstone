@@ -32,27 +32,33 @@ const GoalTracker = (props) => {
     );
   } else {
     return (
-      <div>
-        <div className="logged-cleanups">
-          <div className="logged-cleanups-content">
-            <div className="logged-cleanups-number">
-              <h3>{props.goalStats[0][1]}</h3>
+      <div className="flex-container">
+        <div className="stats-container">
+          <div className="box-container">
+            <div className="box-contents">
+              <div className="logged-cleanups-number">
+                <h3>{props.goalStats[0][1]}</h3>
+              </div>
+              <p>Cleanups logged this week</p>
             </div>
-            <p>Cleanups logged this week</p>
+          </div>
+
+          <div className="box-container">
+            <div className="box-contents">
+              <div className="weekly-goal-button-container">
+                <h3>{props.goalStats[1][1]}</h3>
+                <UpdateGoal goalId={props.goalStats[3][1]} />
+              </div>
+              <p>Current weekly cleanup goal</p>
+            </div>
           </div>
         </div>
-        <div>
-          <h3>{`You're ${props.goalStats[2][1]}% of the way to your goal!`}</h3>
-        </div>
-        <div className="weekly-goal-container">
-          <div className="weekly-goal-button-container">
-            <h3>{props.goalStats[1][1]}</h3>
-            <UpdateGoal goalId={props.goalStats[3][1]} />
-          </div>
-          <p>Current weekly cleanup goal</p>
-        </div>
-        <div>
+        <div className="pond-container">
           <Pond percentage={props.goalStats[2][1]} />
+          <div className="pond-motivation">
+            <h3>{`You're ${props.goalStats[2][1]}% of the way to your goal!`}</h3>
+            <p>Keep logging cleanups to clean your pond!</p>
+          </div>
         </div>
       </div>
     );

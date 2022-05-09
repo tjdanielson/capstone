@@ -8,6 +8,7 @@ import Map from "../../components/Map/Map";
 import axios from "axios";
 import CleanupList from "../../components/CleanupList/CleanupList";
 import "../../App.css";
+import "./UserDashboard.css";
 
 const UserDashboard = (props) => {
   const [user, token] = useAuth();
@@ -118,7 +119,9 @@ const UserDashboard = (props) => {
 
   return (
     <div className="user-dash">
-      <h1>WELCOME BACK, {user.username}</h1>
+      <div className="title">
+        <h1>WELCOME BACK, {user.username.toUpperCase()}</h1>
+      </div>
       <GoalTracker goalStats={goalStats} />
       <UserStats badges={badges[2]} cleanupCount={cleanups.length} />
       <h3>YOUR CLEANUP MAP</h3>
