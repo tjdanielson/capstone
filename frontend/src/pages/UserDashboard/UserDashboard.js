@@ -76,9 +76,6 @@ const UserDashboard = (props) => {
       );
       let result = Object.entries(response.data[0]);
       setBadges(result);
-      console.log("result:", result);
-      console.log("results2:", result[2][1]);
-      console.log(`badges:`, badges);
     } catch (error) {
       console.log(error.message);
     }
@@ -94,6 +91,11 @@ const UserDashboard = (props) => {
           },
         }
       );
+      let list = response.data;
+      list.map((cleanup, i) => {
+        let array = cleanup.date_submitted.split("T");
+        cleanup.date_submitted = array[0];
+      });
       console.log(response.data);
       setCleanups(response.data);
     } catch (error) {
@@ -111,7 +113,6 @@ const UserDashboard = (props) => {
           },
         }
       );
-      console.log("patch badge request:", response.data);
     } catch (ex) {
       console.log("error");
     }
