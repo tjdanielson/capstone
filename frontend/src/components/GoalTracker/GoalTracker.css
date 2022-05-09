@@ -57,6 +57,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  margin-right: 2rem;
+  margin-left: 2rem;
 }
 
 .pond-container {
