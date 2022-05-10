@@ -52,9 +52,6 @@ img {
   flex-wrap: wrap;
 }
 
-.basic-info-container {
-}
-
 .address-container input {
   width: 100%;
   margin: 0.5rem;
@@ -78,8 +75,4 @@ form h4 {
   .update-modal {
     width: 90%;
   }
-
-  /* .basic-info-container {
-    margin-left: 3rem;
-  } */
 }
