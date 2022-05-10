@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import ManageBadges from "../../components/ManageBadges/ManageBadges";
 
 const AmdinPage = (props) => {
   const [user, token] = useAuth();
   const [isStaff, setIsStaff] = useState(false);
+  const [badges, setBadges] = useState([]);
 
   useEffect(() => {
     getIsStaff();
+    getBadges();
   }, [token]);
 
   const getIsStaff = async () => {
@@ -26,6 +29,20 @@ const AmdinPage = (props) => {
       console.log(error.message);
     }
   };
+
+  const getBadges = async () => {
+    try {
+      let response = await axios.get(`http://127.0.0.1:8000/api/badges/`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setBadges(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   if (!isStaff) {
     return (
       <div>
@@ -35,7 +52,18 @@ const AmdinPage = (props) => {
   } else {
     return (
       <div>
-        <p>Admin Page</p>
+        <div>
+          <p>Admin Page</p>
+        </div>
+        <div>
+          <ManageBadges badges={badges} />
+        </div>
+        <div>
+          <p>manage users</p>
+        </div>
+        <div>
+          <p>manage cleanups</p>
+        </div>
       </div>
     );
   }
