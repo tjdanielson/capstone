@@ -24,3 +24,8 @@
   background-color: #a98467;
   border: none;
 }
+
+.required {
+  margin-left: 1rem;
+  font-size: x-small;
+}

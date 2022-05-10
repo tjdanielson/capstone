@@ -141,19 +141,21 @@ const LogCleanup = (props) => {
                     <input
                       type="date"
                       value={date}
-                      placeholder="Date of Cleanup"
+                      placeholder="Date of Cleanup*"
                       required
                       onChange={(event) => setDate(event.target.value)}
                     />
+                    <p className="required">This field is required</p>
                   </div>
                   <div className="form-group">
                     <input
                       type="number"
                       value={time}
-                      placeholder="Time Spent (in minutes)"
+                      placeholder="Time Spent (in minutes)*"
                       required
                       onChange={(event) => setTime(event.target.value)}
                     />
+                    <p className="required">This field is required</p>
                   </div>
                   <div className="form-group">
                     <input
