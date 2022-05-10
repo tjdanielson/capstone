@@ -45,8 +45,12 @@ a:hover {
 .navBar button {
   background: transparent;
   border: white 2px solid;
+  border-radius: 10px;
   color: white;
-  padding: 0.4rem 0.5rem;
+  padding: 0.2rem 0.5rem;
+  font-size: medium;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .navBar button:hover {
