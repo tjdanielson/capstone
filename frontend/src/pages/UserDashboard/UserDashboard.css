@@ -13,7 +13,7 @@
   flex-wrap: wrap;
   margin-top: 2rem;
   margin-bottom: 5rem;
-  margin-left: 10rem;
+  margin-left: 5rem;
   margin-right: 3rem;
 }
 
@@ -23,9 +23,22 @@
 
 .map-container-dash {
   margin-right: 0;
+  margin-left: 0;
   width: 50%;
 }
 
 .cleanup-list-button-container {
   margin-top: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+  .map-container-dash {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .flex-wrap-stats-map {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }

@@ -74,3 +74,14 @@
 .pond-motivation p {
   font-style: italic;
 }
+
+@media only screen and (max-width: 600px) {
+  .flex-container {
+    margin-right: 0rem;
+    margin-left: 0rem;
+  }
+
+  .box-container {
+    width: 100%;
+  }
+}
