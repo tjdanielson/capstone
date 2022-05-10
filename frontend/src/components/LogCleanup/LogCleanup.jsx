@@ -57,7 +57,9 @@ const LogCleanup = (props) => {
       setLat(data.results[0].geometry.location.lat);
       setLng(data.results[0].geometry.location.lng);
     } catch (ex) {
-      console.log("error");
+      alert(
+        "We were unable to get coordinates for the address on your cleanup. To see your cleanup on your map, edit the cleanup with a legitimate address."
+      );
     }
   }
 
@@ -99,7 +101,7 @@ const LogCleanup = (props) => {
         setId(response.data.id);
       }
     } catch (ex) {
-      console.log("error");
+      console.log("error in post request");
       alert("Error - Please try again.");
     }
   }
@@ -119,7 +121,9 @@ const LogCleanup = (props) => {
       window.location.reload(false);
     } catch (ex) {
       console.log("error");
-      alert("Error - Please try again.");
+      alert(
+        "We were unable to get coordinates for the address on your cleanup. To see your cleanup on your map, edit the cleanup with a legitimate address."
+      );
     }
   }
 
