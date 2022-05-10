@@ -4,6 +4,8 @@ import axios from "axios";
 import ManageBadges from "../../components/ManageBadges/ManageBadges";
 import ManageCleanups from "../../components/ManageCleanups/ManageCleanups";
 import ManageUsers from "../../components/ManageUsers/ManageUsers";
+import "../../App.css";
+import "./AdminPage.css";
 
 const AmdinPage = (props) => {
   const [user, token] = useAuth();
@@ -85,18 +87,20 @@ const AmdinPage = (props) => {
     );
   } else {
     return (
-      <div>
+      <div className="admin-page">
         <div>
-          <p>Admin Page</p>
+          <h1>Admin Page</h1>
         </div>
-        <div>
-          <ManageBadges badges={badges} />
-        </div>
-        <div>
-          <ManageCleanups cleanups={cleanups} />
-        </div>
-        <div>
-          <ManageUsers users={users} />
+        <div className="content">
+          <div>
+            <ManageBadges badges={badges} />
+          </div>
+          <div>
+            <ManageCleanups cleanups={cleanups} />
+          </div>
+          <div>
+            <ManageUsers users={users} />
+          </div>
         </div>
       </div>
     );
