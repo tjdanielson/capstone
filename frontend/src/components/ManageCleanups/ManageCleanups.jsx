@@ -8,7 +8,7 @@ const ManageCleanups = (props) => {
   const searchUsers = (event) => {
     event.preventDefault();
     let filteredCleanups = props.cleanups.filter((cleanup, i) => {
-      if (cleanup.user.username == searchTerm) {
+      if (cleanup.user.username === searchTerm) {
         return cleanup;
       }
     });
