@@ -160,8 +160,8 @@ const UpdateCleanup = (props) => {
                 <div className="form-flex-container">
                   <div className="basic-info-container">
                     <p>Basics</p>
+                    <label>Date of Cleanup</label>
                     <div className="form-group">
-                      <label>Date of Cleanup</label>
                       <input
                         type="date"
                         value={date}
@@ -170,8 +170,8 @@ const UpdateCleanup = (props) => {
                         onChange={(event) => setDate(event.target.value)}
                       />
                     </div>
+                    <label>Time Spent</label>
                     <div className="form-group">
-                      <label>Time Spent</label>
                       <input
                         type="number"
                         value={time}

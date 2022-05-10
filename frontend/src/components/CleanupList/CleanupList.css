@@ -35,6 +35,10 @@ th {
   flex-wrap: wrap;
 }
 
+img {
+  max-width: 300px;
+}
+
 .update-modal {
   width: 60%;
   max-width: none !important;
@@ -43,9 +47,12 @@ th {
 .form-flex-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 0.5rem;
   flex-wrap: wrap;
+}
+
+.basic-info-container {
 }
 
 .address-container input {
@@ -56,4 +63,23 @@ th {
 form h4 {
   text-align: center;
   margin-top: 2rem;
+}
+
+@media only screen and (max-width: 850px) {
+  img {
+    max-width: 100px;
+  }
+
+  .basic-info-container {
+    width: 100%;
+    margin: 0.5rem;
+  }
+
+  .update-modal {
+    width: 90%;
+  }
+
+  /* .basic-info-container {
+    margin-left: 3rem;
+  } */
 }
