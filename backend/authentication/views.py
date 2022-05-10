@@ -1,5 +1,6 @@
+from functools import partial
 from django.contrib.auth import get_user_model
-from .serializers import MyTokenObtainPairSerializer, RegistrationSerializer, UserBadgeSerializer
+from .serializers import MyTokenObtainPairSerializer, RegistrationSerializer, UserBadgeSerializer, UserSerializer
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -45,6 +46,30 @@ class UserBadges(APIView, IsAuthenticated):
             return Response(serializer.data)
         except Badge.DoesNotExist:
             raise Http404
+
+class UserList(APIView, IsAuthenticated):
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+class UserDetail(APIView, IsAuthenticated):
+
+    def get_object(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise Http404
+
+    def patch(self, request, pk):
+        user = self.get_object(pk)
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid() and request.user.is_staff:
+            serializer.save(user=request.user)
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
 
 
 

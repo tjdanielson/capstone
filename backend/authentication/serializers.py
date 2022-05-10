@@ -59,3 +59,10 @@ class UserBadgeSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'is_staff', 'badges']
         depth = 1
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'last_login', 'is_active','is_staff', 'date_joined']
+        depth = 1

@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import ManageBadges from "../../components/ManageBadges/ManageBadges";
 import ManageCleanups from "../../components/ManageCleanups/ManageCleanups";
+import ManageUsers from "../../components/ManageUsers/ManageUsers";
 
 const AmdinPage = (props) => {
   const [user, token] = useAuth();
@@ -79,7 +80,7 @@ const AmdinPage = (props) => {
           <ManageCleanups cleanups={cleanups} />
         </div>
         <div>
-          <p>manage users</p>
+          <ManageUsers />
         </div>
       </div>
     );
