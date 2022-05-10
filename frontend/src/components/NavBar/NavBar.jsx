@@ -26,7 +26,7 @@ const Navbar = () => {
           </Dropdown.Menu>
         </Dropdown>
         <div className="navlinks">{user ? <LogCleanup /> : null}</div>
-        <div className="navlinks">
+        <div className="admin">
           {user && user.is_staff ? <Link to="admin/">Admin</Link> : null}
         </div>
         <div className="navlinks">
