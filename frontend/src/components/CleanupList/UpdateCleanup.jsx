@@ -134,6 +134,7 @@ const UpdateCleanup = (props) => {
               <div className="before">
                 <h4>Before Image</h4>
                 <img
+                  className="update-images"
                   src={
                     props.cleanup.before_img
                       ? `http://127.0.0.1:8000${props.cleanup.before_img}`
@@ -145,6 +146,7 @@ const UpdateCleanup = (props) => {
               <div className="after">
                 <h4>After Image</h4>
                 <img
+                  className="update-images"
                   src={
                     props.cleanup.after_img
                       ? `http://127.0.0.1:8000${props.cleanup.after_img}`

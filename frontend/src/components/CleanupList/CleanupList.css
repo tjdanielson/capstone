@@ -35,7 +35,7 @@ th {
   flex-wrap: wrap;
 }
 
-img {
+.update-images {
   max-width: 300px;
 }
 
@@ -63,7 +63,7 @@ form h4 {
 }
 
 @media only screen and (max-width: 850px) {
-  img {
+  .update-images {
     max-width: 100px;
   }
 
