@@ -92,13 +92,13 @@ const AmdinPage = (props) => {
           <h1>Admin Page</h1>
         </div>
         <div className="content">
-          <div>
+          <div className="component">
             <ManageBadges badges={badges} />
           </div>
-          <div>
+          <div className="component">
             <ManageCleanups cleanups={cleanups} />
           </div>
-          <div>
+          <div className="component">
             <ManageUsers users={users} />
           </div>
         </div>

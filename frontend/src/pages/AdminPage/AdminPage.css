@@ -2,3 +2,16 @@
   margin-left: 5rem;
   margin-right: 5rem;
 }
+
+.component {
+  margin-top: 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+h1 {
+  color: #6c584c;
+}

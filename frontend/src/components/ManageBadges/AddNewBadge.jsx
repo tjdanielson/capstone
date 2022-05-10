@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import useAuth from "../../hooks/useAuth";
+import "../../pages/AdminPage/AdminPage.css";
 
 const AddNewBadge = (props) => {
   const [user, token] = useAuth();
@@ -50,9 +51,15 @@ const AddNewBadge = (props) => {
   return (
     <div className="container">
       <>
-        <Button className="modal-button" variant="primary" onClick={handleShow}>
-          New Badge
-        </Button>
+        <div className="button-holder">
+          <Button
+            className="modal-button"
+            variant="primary"
+            onClick={handleShow}
+          >
+            New Badge
+          </Button>
+        </div>
         <Modal show={show} onHide={handleClose}>
           <div class="modal-content">
             <Modal.Header closeButton>
