@@ -133,7 +133,7 @@ const UserDashboard = (props) => {
         </div>
         <div className="map-container-dash">
           <h3>YOUR CLEANUP MAP</h3>
-          <Map coordinates={coords} />
+          <Map coordinates={coords} zoom={13} />
           <div className="cleanup-list-button-container">
             <CleanupList cleanups={cleanups} />
           </div>

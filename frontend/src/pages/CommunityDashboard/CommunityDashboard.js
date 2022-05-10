@@ -71,7 +71,7 @@ const CommunityDashboard = (props) => {
   return (
     <div className="community-dash">
       <h3>Community Cleanup Map</h3>
-      <Map coordinates={coords} />
+      <Map coordinates={coords} zoom={4} />
       <div className="leader-stats-flex-wrapper">
         <div className="leaderboard-container">
           <h3>Weekly Leaderboard</h3>

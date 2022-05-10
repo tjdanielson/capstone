@@ -15,7 +15,7 @@ const Map = (props) => {
   } else {
     return (
       <GoogleMap
-        zoom={13}
+        zoom={props.zoom}
         center={props.coordinates[0]}
         mapContainerClassName="map-container"
       >
