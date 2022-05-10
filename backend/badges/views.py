@@ -40,7 +40,7 @@ class BadgeDetail(APIView, IsAuthenticated):
 
     def put(self, request, pk):
         badge = self.get_object(pk)
-        serializer = BadgeSerializer(badge, data=request.data)
+        serializer = BadgeSerializer(badge, data=request.data, partial=True)
         if serializer.is_valid() and request.user.is_staff == 1:
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)

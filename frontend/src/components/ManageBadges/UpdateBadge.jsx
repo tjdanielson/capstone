@@ -18,7 +18,7 @@ const UpdateBadge = (props) => {
 
   const [description, setDescription] = useState(props.badge.description);
   const [prereq, setPrereq] = useState(props.badge.cleanup_prereq);
-  const [image, setImage] = useState(props.badge.unlocked_image);
+  const [image, setImage] = useState("");
 
   function handleSumbit(event) {
     makePutRequest();
@@ -28,7 +28,9 @@ const UpdateBadge = (props) => {
     const fd = new FormData();
     fd.append("description", description);
     fd.append("cleanup_prereq", prereq);
-    fd.append("unlocked_image", image);
+    if (image) {
+      fd.append("unlocked_image", image);
+    }
 
     try {
       let response = await axios.put(

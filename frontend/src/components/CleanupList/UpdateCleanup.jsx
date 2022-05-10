@@ -25,8 +25,8 @@ const UpdateCleanup = (props) => {
   const [city, setCity] = useState(props.cleanup.city);
   const [state, setState] = useState(props.cleanup.state);
   const [zip, setZip] = useState(props.cleanup.zip);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
 
   useEffect(() => {
     if (lat && lng) {
