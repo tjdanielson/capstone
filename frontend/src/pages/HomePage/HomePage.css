@@ -4,6 +4,14 @@ html {
   background-color: #f0ead2;
 }
 
+.homepage p {
+  color: #6c584c;
+}
+
+.body-content {
+  margin: 4rem;
+}
+
 .banner {
   /* width: 1000px; */
   height: 300px;
@@ -20,4 +28,15 @@ html {
   position: relative;
   background-position: center;
   background-size: cover;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icons p {
+  text-align: center;
 }
