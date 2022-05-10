@@ -49,7 +49,7 @@ const AddNewBadge = (props) => {
   }
 
   return (
-    <div className="container">
+    <div className="manage-badge-container">
       <>
         <div className="button-holder">
           <Button

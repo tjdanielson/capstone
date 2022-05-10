@@ -13,26 +13,11 @@ html {
   background-color: #f0ead2;
 }
 
-.user-dash {
-  background-color: #f0ead2;
-}
-
-.homepage {
-  background-color: #f0ead2;
-}
-
-.community-dash {
-  background-color: #f0ead2;
-}
-
-.login-page {
-  background-color: #f0ead2;
-}
-
-.register-page {
-  background-color: #f0ead2;
-}
-
+.user-dash,
+.homepage,
+.community-dash,
+.login-page,
+.register-page,
 .admin-page {
   background-color: #f0ead2;
 }
