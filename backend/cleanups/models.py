@@ -15,8 +15,8 @@ class Cleanup(models.Model):
     city = models.CharField(max_length=100, null=True, blank=True)
     state = models.CharField(max_length=100, null=True, blank=True)
     zip = models.IntegerField(null=True, blank=True)
-    latitude = models.DecimalField(max_digits=9, decimal_places=7, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=7, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=10, decimal_places=7, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=10, decimal_places=7, null=True, blank=True)
 
 
 
