@@ -4,6 +4,20 @@ html {
   background-color: #f0ead2;
 }
 
-.homepage {
-  background-image: url("../../../public/assets/background.png");
+.banner {
+  /* width: 1000px; */
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+      90deg,
+      #929e71 20%,
+      rgba(0, 0, 0, 0),
+      #929e71 80%
+    ),
+    url("../../../public/assets/pexels-thirdman-7657043.jpg");
+  object-fit: cover;
+  position: relative;
+  background-position: center;
+  background-size: cover;
 }
