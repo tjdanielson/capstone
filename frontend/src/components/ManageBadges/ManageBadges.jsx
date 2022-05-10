@@ -1,9 +1,12 @@
 import React from "react";
+import AddNewBadge from "./AddNewBadge";
 import DeleteBadge from "./DeleteBadge";
 
 const ManageBadges = (props) => {
   return (
     <div>
+      <h3>Manage Badges</h3>
+      <AddNewBadge />
       <table className="my-table">
         <thead>
           <tr>
