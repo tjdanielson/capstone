@@ -72,6 +72,7 @@ const UserDashboard = (props) => {
           },
         }
       );
+      console.log("get user badges: ", response.data);
       let result = Object.entries(response.data[0]);
       setBadges(result);
     } catch (error) {
@@ -125,7 +126,7 @@ const UserDashboard = (props) => {
         <div className="your-stats-container">
           <h3>YOUR STATS</h3>
           <UserStats
-            badges={badges[2]}
+            badges={badges[3]}
             cleanupCount={cleanups.length}
             totalMinutes={goalStats[4]}
           />
@@ -139,7 +140,7 @@ const UserDashboard = (props) => {
         </div>
       </div>
       <div className="badges-container">
-        <Badges badges={badges[2]} />
+        <Badges badges={badges} />
       </div>
     </div>
   );
