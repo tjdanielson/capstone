@@ -131,16 +131,10 @@ class TopUsers(APIView, IsAuthenticated):
 
 
 class CommunityStats(APIView, IsAuthenticated):
-    def totalBadges(self):
-        total_badges = User.objects.filter(badges__isnull=False).values('badges') #aggregate(sum('badges'))
-        sum_badges = 0
-        for i in total_badges:
-            sum_badges += i['badges']
-        return sum_badges
     
     def get(self, request):
         total_cleanups = Cleanup.objects.count()
-        total_badges = self.totalBadges()
+        total_badges = User.objects.filter(badges__isnull=False).values('badges').count()
         distinct_cities = Cleanup.objects.values('city').distinct()
         city_count = distinct_cities.count()
         user_count = User.objects.count()
