@@ -1,6 +1,7 @@
 import React from "react";
 import AddNewBadge from "./AddNewBadge";
 import DeleteBadge from "./DeleteBadge";
+import UpdateBadge from "./UpdateBadge";
 
 const ManageBadges = (props) => {
   return (
@@ -29,9 +30,9 @@ const ManageBadges = (props) => {
                 <td>
                   <DeleteBadge badgeId={badge.id} />
                 </td>
-                {/* <td>
-                      <UpdateCleanup cleanup={cleanup} />
-                    </td> */}
+                <td>
+                  <UpdateBadge badge={badge} />
+                </td>
               </tr>
             );
           })}
