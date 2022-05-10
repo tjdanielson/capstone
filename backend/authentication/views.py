@@ -69,6 +69,11 @@ class UserDetail(APIView, IsAuthenticated):
             serializer.save(user=request.user)
             return Response(serializer.data)
         return Response(serializer.errors)
+    
+    def get(self, request, pk):
+        user = self.get_object(pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 
 

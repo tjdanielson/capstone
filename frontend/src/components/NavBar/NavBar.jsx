@@ -9,6 +9,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  console.log(user.is_staff);
 
   let mediaQueryCondition = window.matchMedia("( max-width: 650px )");
 
@@ -25,7 +26,10 @@ const Navbar = () => {
             <Dropdown.Item href="/commdash/">Community Dashboard</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <div className="navlinks">{user ? <LogCleanup /> : <a></a>}</div>
+        <div className="navlinks">{user ? <LogCleanup /> : null}</div>
+        <div className="navlinks">
+          {user.is_staff ? <Link to="admin/">Admin</Link> : null}
+        </div>
         <div className="navlinks">
           {user ? (
             <button onClick={logoutUser}>Logout</button>
@@ -61,6 +65,9 @@ const Navbar = () => {
           <li className="navlinks">{user ? <LogCleanup /> : <a></a>}</li>
         </ul>
         <ul className="listtwo">
+          <li className="navlinks">
+            {user.is_staff ? <Link to="admin/">Admin</Link> : null}
+          </li>
           <li className="navlinks">
             {user ? (
               <button onClick={logoutUser}>Logout</button>
