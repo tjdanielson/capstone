@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import useAuth from "../../hooks/useAuth";
 
-const DeleteBadge = (props) => {
+const DeleteCleanup = (props) => {
   const [user, token] = useAuth();
   const [show, setShow] = useState(false);
 
@@ -19,7 +19,7 @@ const DeleteBadge = (props) => {
   async function makeDeleteRequest() {
     try {
       let response = await axios.delete(
-        `http://127.0.0.1:8000/api/badges/${props.badgeId}/`,
+        `http://127.0.0.1:8000/api/cleanups/${props.cleanupId}/`,
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -38,7 +38,7 @@ const DeleteBadge = (props) => {
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="title">Delete Badge?</Modal.Title>
+          <Modal.Title className="title">Delete Cleanup?</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body">
           This action cannot be undone.
@@ -49,7 +49,7 @@ const DeleteBadge = (props) => {
             variant="primary"
             onClick={handleCloseSave}
           >
-            Delete Badge
+            Delete Cleanup
           </Button>
         </Modal.Footer>
       </Modal>
@@ -57,4 +57,4 @@ const DeleteBadge = (props) => {
   );
 };
 
-export default DeleteBadge;
+export default DeleteCleanup;

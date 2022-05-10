@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DeleteCleanup from "./DeleteCleanup";
 
 const ManageCleanups = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -46,9 +47,9 @@ const ManageCleanups = (props) => {
                   <td>{cleanup.time_spent}</td>
                   <td>{cleanup.date_cleanup}</td>
                   <td>{cleanup.user.username}</td>
-                  {/* <td>
+                  <td>
                     <DeleteCleanup cleanupId={cleanup.id} />
-                  </td> */}
+                  </td>
                 </tr>
               );
             })}
