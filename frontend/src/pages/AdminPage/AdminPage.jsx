@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import ManageBadges from "../../components/ManageBadges/ManageBadges";
+import ManageCleanups from "../../components/ManageCleanups/ManageCleanups";
 
 const AmdinPage = (props) => {
   const [user, token] = useAuth();
   const [isStaff, setIsStaff] = useState(false);
   const [badges, setBadges] = useState([]);
+  const [cleanups, setCleanups] = useState([]);
 
   useEffect(() => {
     getIsStaff();
     getBadges();
+    getCleanups();
   }, [token]);
 
   const getIsStaff = async () => {
@@ -43,6 +46,20 @@ const AmdinPage = (props) => {
     }
   };
 
+  const getCleanups = async () => {
+    try {
+      let response = await axios.get(`http://127.0.0.1:8000/api/cleanups/`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      console.log("cleanups: ", response.data);
+      setCleanups(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   if (!isStaff) {
     return (
       <div>
@@ -59,10 +76,10 @@ const AmdinPage = (props) => {
           <ManageBadges badges={badges} />
         </div>
         <div>
-          <p>manage users</p>
+          <ManageCleanups cleanups={cleanups} />
         </div>
         <div>
-          <p>manage cleanups</p>
+          <p>manage users</p>
         </div>
       </div>
     );
