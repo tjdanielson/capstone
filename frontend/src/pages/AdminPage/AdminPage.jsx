@@ -10,11 +10,13 @@ const AmdinPage = (props) => {
   const [isStaff, setIsStaff] = useState(false);
   const [badges, setBadges] = useState([]);
   const [cleanups, setCleanups] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     getIsStaff();
     getBadges();
     getCleanups();
+    getUsers();
   }, [token]);
 
   const getIsStaff = async () => {
@@ -61,6 +63,20 @@ const AmdinPage = (props) => {
     }
   };
 
+  const getUsers = async () => {
+    try {
+      let response = await axios.get(`http://127.0.0.1:8000/api/auth/users/`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      console.log("users: ", response.data);
+      setUsers(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   if (!isStaff) {
     return (
       <div>
@@ -80,7 +96,7 @@ const AmdinPage = (props) => {
           <ManageCleanups cleanups={cleanups} />
         </div>
         <div>
-          <ManageUsers />
+          <ManageUsers users={users} />
         </div>
       </div>
     );

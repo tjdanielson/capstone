@@ -28,7 +28,10 @@ const ManageCleanups = (props) => {
           <button type="submit">Filter</button>
         </form>
       </div>
-      {searchResults && (
+      <div>
+        <p>Search for a user to manage their cleanups.</p>
+      </div>
+      {searchTerm && (
         <table className="my-table">
           <thead>
             <tr>
