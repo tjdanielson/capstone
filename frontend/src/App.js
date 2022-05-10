@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import CommunityDashboard from "./pages/CommunityDashboard/CommunityDashboard";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -35,6 +36,14 @@ function App() {
           element={
             <PrivateRoute>
               <CommunityDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <AdminPage />
             </PrivateRoute>
           }
         />
