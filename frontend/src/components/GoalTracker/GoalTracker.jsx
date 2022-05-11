@@ -12,17 +12,28 @@ const GoalTracker = (props) => {
     return null;
   } else if (props.goalStats[1][1] === 0) {
     return (
-      <div>
-        <div>
-          <h3>{props.goalStats[0][1]}</h3>
-          <h3>Cleanups logged this week</h3>
+      <div className="flex-container">
+        <div className="stats-container">
+          <div className="box-container">
+            <div className="box-contents">
+              <div className="logged-cleanups-number">
+                <h2>{props.goalStats[0][1]}</h2>
+              </div>
+              <p>Cleanups logged this week</p>
+            </div>
+          </div>
+
+          <div className="box-container">
+            <div className="box-contents">
+              <div className="weekly-goal-button-container">
+                <h2>{props.goalStats[1][1]}</h2>
+                <UpdateGoal goalId={props.goalStats[3][1]} />
+              </div>
+              <p>Update your goal to start tracking your progress!</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>{props.goalStats[1][1]}</h3>
-          <UpdateGoal goalId={props.goalStats[3][1]} />
-          <h3>Update your goal to start tracking your progress!</h3>
-        </div>
-        <div>
+        <div className="pond-container">
           <img
             src={`${process.env.PUBLIC_URL}/assets/update_goal.png`}
             alt="update goal text on top of pond"
