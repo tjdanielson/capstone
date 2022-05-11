@@ -9,6 +9,7 @@ import axios from "axios";
 import CleanupList from "../../components/CleanupList/CleanupList";
 import "../../App.css";
 import "./UserDashboard.css";
+import LogMap from "../../components/LogMap/LogMap";
 
 const UserDashboard = (props) => {
   const [user, token] = useAuth();

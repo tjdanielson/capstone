@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import useAuth from "../../hooks/useAuth";
 import "./LogCleanup.css";
+import LogMap from "../../components/LogMap/LogMap";
 
 const LogCleanup = (props) => {
   const [user, token] = useAuth();
@@ -40,6 +41,12 @@ const LogCleanup = (props) => {
       makePatchRequest(coordinates);
     }
   }, [lat, lng, id]);
+
+  const getMapCoords = (childLat, childLng) => {
+    setLat(childLat);
+    setLng(childLng);
+    console.log("in parent map coords: ", childLat, childLng);
+  };
 
   //checks if an address was included in the cleanup log, if it does, it sends address to get coordinates from google's geocoding api
   function handleSumbit(event) {
@@ -213,6 +220,7 @@ const LogCleanup = (props) => {
                     />
                   </div>
                 </form>
+                <LogMap setMapCoords={getMapCoords} />
               </div>
             </Modal.Body>
             <Modal.Footer>
