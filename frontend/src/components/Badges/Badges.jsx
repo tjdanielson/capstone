@@ -1,12 +1,9 @@
 import react from "react";
 import "./Badges.css";
 const Badges = (props) => {
+  //returns null if props.badges has not been set yet, returns a statement to start logging cleanups if props.badges exists, but there are not badges
   if (props.badges.length === 0) {
-    return (
-      <div>
-        <p className="generic-text">Start logging cleanups to earn badges!</p>
-      </div>
-    );
+    return null;
   } else if (props.badges[3][1].length === 0) {
     return (
       <div>

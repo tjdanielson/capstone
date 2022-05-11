@@ -22,6 +22,7 @@ const UserStats = (props) => {
     setBadgeCount(count);
   }
 
+  //converts minutes object into a usable digit to display
   function getTime() {
     let time = Object.entries(props.totalMinutes[1]);
     if (!time[0][1]) {
@@ -60,5 +61,3 @@ const UserStats = (props) => {
 };
 
 export default UserStats;
-
-//        <p>{props.badgeCount}</p>

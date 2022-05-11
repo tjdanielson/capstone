@@ -30,6 +30,7 @@ const LogCleanup = (props) => {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
 
+  //checks for coordinates from google geocoding, converts them to the correct format and makes a patch request after the initial post request is complete
   useEffect(() => {
     if (lat && lng && id > 0) {
       let coordinates = {
@@ -40,6 +41,7 @@ const LogCleanup = (props) => {
     }
   }, [lat, lng, id]);
 
+  //checks if an address was included in the cleanup log, if it does, it sends address to get coordinates from google's geocoding api
   function handleSumbit(event) {
     event.preventDefault();
     if (street && city && state) {
@@ -48,6 +50,7 @@ const LogCleanup = (props) => {
     makePostRequest();
   }
 
+  //google geocoding api
   async function getCoordinates() {
     try {
       let response = await axios.get(
@@ -106,6 +109,7 @@ const LogCleanup = (props) => {
     }
   }
 
+  //patches the cleanup made with the post request with coordinates from google
   async function makePatchRequest(coordinates) {
     try {
       let response = await axios.patch(
