@@ -187,6 +187,11 @@ const LogCleanup = (props) => {
                       onChange={(event) => setAfterImg(event.target.files[0])}
                     />
                   </div>
+                  <p className="instructions">
+                    Choose a location by entering a street address OR by
+                    dropping a pin on the map below
+                  </p>
+                  <h4>Street Address</h4>
                   <div className="form-group">
                     <input
                       type="text"
@@ -219,7 +224,9 @@ const LogCleanup = (props) => {
                       onChange={(event) => setZip(event.target.value)}
                     />
                   </div>
+                  <h4>Drop a Pin</h4>
                 </form>
+
                 <LogMap setMapCoords={getMapCoords} />
               </div>
             </Modal.Body>

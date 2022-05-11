@@ -29,3 +29,8 @@
   margin-left: 1rem;
   font-size: x-small;
 }
+
+.instructions {
+  color: #6c584c;
+  font-weight: bold;
+}

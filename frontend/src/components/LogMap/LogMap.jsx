@@ -3,11 +3,9 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import "./LogMap.css";
 
-let startingPosition = { lat: 48.451778, lng: 31.646305 };
+let startingPosition = { lat: 43.0389, lng: -87.9065 };
 
 const Map = (props) => {
-  const [mapLat, setMapLat] = useState("");
-  const [mapLng, setMapLng] = useState("");
   const [markerPosition, setMarkerPosition] = useState([]);
 
   const { isLoaded } = useLoadScript({
@@ -33,7 +31,7 @@ const Map = (props) => {
       onClick={(ev) => {
         getCoords(ev);
       }}
-      zoom={10}
+      zoom={5}
       center={startingPosition}
       mapContainerClassName="map-container"
     >
