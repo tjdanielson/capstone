@@ -20,6 +20,7 @@ const DeleteCleanup = (props) => {
       let response = await axios.delete(
         `http://127.0.0.1:8000/api/cleanups/${props.cleanupId}/`
       );
+      window.location.reload(false);
     } catch (ex) {
       alert("Error. Cleanup not deleted. Please try again.");
     }
