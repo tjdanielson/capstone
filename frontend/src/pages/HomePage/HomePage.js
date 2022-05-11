@@ -41,8 +41,8 @@ const HomePage = () => {
 
         <h3>So what are you waiting for? </h3>
         <p>
-          Join our online community of people all over the US who are helping to
-          keep our land and water clean one cleanup at a time!{" "}
+          Join our online community of people all over the world who are helping
+          to keep our land and water clean one cleanup at a time!{" "}
         </p>
       </div>
     </div>
