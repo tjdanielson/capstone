@@ -56,6 +56,7 @@ const UserDashboard = (props) => {
         }
       );
       let result = Object.entries(response.data);
+      console.log(response.data);
       setGoalStats(result);
     } catch (error) {
       console.log(error.message);

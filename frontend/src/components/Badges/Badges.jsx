@@ -1,8 +1,6 @@
 import react from "react";
 import "./Badges.css";
 const Badges = (props) => {
-  console.log(props.badges);
-  console.log(props.badges.length);
   if (props.badges.length === 0) {
     return (
       <div>

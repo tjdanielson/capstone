@@ -24,7 +24,11 @@ const UserStats = (props) => {
 
   function getTime() {
     let time = Object.entries(props.totalMinutes[1]);
-    setMinutes(time[0][1]);
+    if (!time[0][1]) {
+      setMinutes(0);
+    } else {
+      setMinutes(time[0][1]);
+    }
   }
 
   return (
