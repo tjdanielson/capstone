@@ -11,7 +11,13 @@ const Map = (props) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   if (props.coordinates.length === 0) {
-    return null;
+    return (
+      <div>
+        <p className="generic-text">
+          Log cleanups with addresses to see them on a map!
+        </p>
+      </div>
+    );
   } else {
     return (
       <GoogleMap

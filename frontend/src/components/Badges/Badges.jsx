@@ -4,7 +4,20 @@ const Badges = (props) => {
   console.log(props.badges);
   console.log(props.badges.length);
   if (props.badges.length === 0) {
-    return null;
+    return (
+      <div>
+        <p className="generic-text">Start logging cleanups to earn badges!</p>
+      </div>
+    );
+  } else if (props.badges[3][1].length === 0) {
+    return (
+      <div>
+        <div className="header">
+          <h3>BADGES</h3>
+        </div>
+        <p className="generic-text">Start logging cleanups to earn badges!</p>
+      </div>
+    );
   }
   return (
     <div>
