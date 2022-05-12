@@ -21,7 +21,6 @@ const Map = (props) => {
       lat: lat,
       lng: lng,
     };
-    console.log(lat, lng);
     setMarkerPosition(coordinates);
     props.setMapCoords(lat, lng);
   };

@@ -42,10 +42,10 @@ const LogCleanup = (props) => {
     }
   }, [lat, lng, id]);
 
+  // gets coordinates from the marker placed by the user on the map in the logcleanup form
   const getMapCoords = (childLat, childLng) => {
     setLat(childLat);
     setLng(childLng);
-    console.log("in parent map coords: ", childLat, childLng);
   };
 
   //checks if an address was included in the cleanup log, if it does, it sends address to get coordinates from google's geocoding api

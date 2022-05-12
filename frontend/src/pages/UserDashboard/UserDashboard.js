@@ -57,7 +57,6 @@ const UserDashboard = (props) => {
         }
       );
       let result = Object.entries(response.data);
-      console.log(response.data);
       setGoalStats(result);
     } catch (error) {
       console.log(error.message);
@@ -74,7 +73,6 @@ const UserDashboard = (props) => {
           },
         }
       );
-      console.log("get user badges: ", response.data);
       let result = Object.entries(response.data[0]);
       setBadges(result);
     } catch (error) {
