@@ -9,34 +9,16 @@ import "./AdminPage.css";
 
 const AmdinPage = (props) => {
   const [user, token] = useAuth();
-  const [isStaff, setIsStaff] = useState(false);
+  //const [isStaff, setIsStaff] = useState(false);
   const [badges, setBadges] = useState([]);
   const [cleanups, setCleanups] = useState([]);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    getIsStaff();
     getBadges();
     getCleanups();
     getUsers();
   }, [token]);
-
-  const getIsStaff = async () => {
-    try {
-      let response = await axios.get(
-        `http://127.0.0.1:8000/api/auth/getbadges/${user.id}/`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      let result = Object.entries(response.data[0]);
-      setIsStaff(result[2][1]);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   const getBadges = async () => {
     try {
@@ -79,7 +61,7 @@ const AmdinPage = (props) => {
     }
   };
 
-  if (!isStaff) {
+  if (!user.is_staff) {
     return (
       <div>
         <h3>Oops, looks like you don't have access to this page.</h3>
