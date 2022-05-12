@@ -16,8 +16,12 @@ const LogCleanup = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleCloseSave = (event) => {
-    setShow(false);
-    handleSumbit(event);
+    if (date === "" || time === "") {
+      alert(`Date of cleanup and Time Spent are required fields.`);
+    } else {
+      setShow(false);
+      handleSumbit(event);
+    }
   };
 
   const [date, setDate] = useState("");
