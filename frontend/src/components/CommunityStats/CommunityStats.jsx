@@ -1,9 +1,6 @@
 import "../UserStats/UserStats.css";
 
 const CommunityStats = (props) => {
-  {
-    console.log(props.stats);
-  }
   if (!props.stats) {
     return null;
   } else {

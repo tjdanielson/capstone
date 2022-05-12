@@ -35,7 +35,6 @@ const CommunityDashboard = (props) => {
         }
       });
       setCoords(new_coords);
-      console.log(coords);
     } catch (error) {
       console.log(error.message);
     }
@@ -49,7 +48,6 @@ const CommunityDashboard = (props) => {
       );
       let result = Object.entries(response.data);
       setTopUsers(result);
-      console.log("converted:", result);
     } catch (error) {
       console.log(error.message);
     }
@@ -61,7 +59,6 @@ const CommunityDashboard = (props) => {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/cleanups/communityStats/`
       );
-      console.log(response.data);
       setStats(response.data);
     } catch (error) {
       console.log(error.message);

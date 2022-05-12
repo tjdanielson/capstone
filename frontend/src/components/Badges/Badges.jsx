@@ -20,7 +20,6 @@ const Badges = (props) => {
         <h3>BADGES</h3>
       </div>
       <div className="badge-container">
-        {console.log("badges3: ", props.badges[3][1])}
         {props.badges[3][1].map((badge, i) => {
           return (
             <div className="badge-card" key={i}>
