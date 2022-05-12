@@ -6,7 +6,7 @@ import "./LogMap.css";
 let startingPosition = { lat: 43.0389, lng: -87.9065 };
 
 const Map = (props) => {
-  const [markerPosition, setMarkerPosition] = useState([]);
+  const [markerPosition, setMarkerPosition] = useState();
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,

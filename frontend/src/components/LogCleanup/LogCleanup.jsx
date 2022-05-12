@@ -145,7 +145,7 @@ const LogCleanup = (props) => {
           Log a Cleanup
         </Button>
         <Modal show={show} onHide={handleClose}>
-          <div class="modal-content">
+          <div className="modal-content">
             <Modal.Header closeButton>
               <Modal.Title className="title">Log a Cleanup</Modal.Title>
             </Modal.Header>
