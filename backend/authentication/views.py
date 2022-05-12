@@ -29,7 +29,8 @@ class UserBadges(APIView, IsAuthenticated):
         serializer = UserBadgeSerializer(users, many=True)
         return Response(serializer.data)
 
-    #intakes user id, counts number of cleanups the user has, if that matches a pre-req on a badge, it adds the badge to the user
+    #intakes user id, counts number of cleanups the user has, if that matches a pre-req on a badge, it adds the badge to the user 
+    # and vice-versa (if a user has a badge that they shouldn't based on number of cleanups, it will remove that badge)
     def patch(self, request, user_id):
         print(request.user)
         user = User.objects.get(id=user_id)

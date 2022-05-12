@@ -82,6 +82,7 @@ class AddressDetail(APIView, AllowAny):
         serializer = AddressSerializer(user_addresses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+#gets cleanup stats for a specific user for user dashboard
 class UserCleanupStats(APIView, IsAuthenticated):
     def currentWeekCleanups(self, user_id):
         today = datetime.date.today()
