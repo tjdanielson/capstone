@@ -34,3 +34,9 @@
   color: #6c584c;
   font-weight: bold;
 }
+
+.modal-button:focus {
+  background-color: #adc178;
+  box-shadow: none;
+  border-color: white;
+}

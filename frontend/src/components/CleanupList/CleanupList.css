@@ -62,6 +62,12 @@ form h4 {
   margin-top: 2rem;
 }
 
+.modal-button:focus {
+  background-color: #c5a084;
+  box-shadow: none;
+  border-color: white;
+}
+
 @media only screen and (max-width: 850px) {
   .update-images {
     max-width: 100px;
